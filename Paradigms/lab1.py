@@ -33,6 +33,8 @@ a = np.diff(np.sign(np.diff(y))).nonzero()[0] + 1 # local min+max
 b = (np.diff(np.sign(np.diff(y))) > 0).nonzero()[0] + 1 # local min
 c = (np.diff(np.sign(np.diff(y))) < 0).nonzero()[0] + 1 # local max
 
+print("Extremums:")
+print("min: x = %.1f" %x[b][0] , "  y = %.1f"  %y[b][0])
 
 # graphical output...
 p.plot(x, y, 'g-', lw=1)
