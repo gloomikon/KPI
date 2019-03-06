@@ -33,6 +33,9 @@ abstract public class Card
         Card card;
         if (choice == 1)
             card = new SchoolCard(DataBase.getInstance().getCardsNumber() + 1);
+        else
+            card = null;
+        return card;
     }
     abstract public boolean checkPass();
     abstract public void addRides(int rides);
