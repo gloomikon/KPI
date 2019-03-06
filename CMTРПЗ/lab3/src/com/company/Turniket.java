@@ -65,4 +65,21 @@ public class Turniket
                 System.out.println(" Failure");
         }
     }
+    public void getInfo(int choice)
+    {
+        for (Pass pass : this.passes)
+        {
+            if (    (choice == 1 && pass.getCardType() == "school") ||
+                    (choice == 2 && pass.getCardType() == "student") ||
+                    (choice == 3 && pass.getCardType() == "stash"))
+            {
+                System.out.print("Date: " + pass.getDate() + " Card type: " + pass.getCardType() + " Card №" + pass.getCardNumber());
+                if (pass.getResult())
+                    System.out.println(" Success");
+                else
+                    System.out.println(" Failure");
+            }
+
+        }
+    }
 }

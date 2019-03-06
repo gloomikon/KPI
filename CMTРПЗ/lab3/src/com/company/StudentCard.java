@@ -2,13 +2,13 @@ package com.company;
 import java.util.Date;
 import java.util.Calendar;
 
-public class SchoolCard extends Card
+public class StudentCard extends Card
 {
     private Date finDate;
     private int rides;
-    public SchoolCard(int number)
+    public StudentCard(int number)
     {
-        super("school", number);
+        super("student", number);
         this.rides = 0;
         this.finDate = null;
     }

@@ -28,11 +28,15 @@ abstract public class Card
     {
         this.status = status;
     }
-    static public Card createCard(int choice)
+    static public Card createCard(int choice, int number)
     {
         Card card;
         if (choice == 1)
-            card = new SchoolCard(DataBase.getInstance().getCardsNumber() + 1);
+            card = new SchoolCard(number);
+        else if (choice == 2)
+            card = new StudentCard(number);
+        else if (choice == 3)
+            card = new StashCard(number);
         else
             card = null;
         return card;
@@ -40,6 +44,7 @@ abstract public class Card
     abstract public boolean checkPass();
     abstract public void addRides(int rides);
     abstract public void addDays(int days);
+    abstract public void addCash(int cash);
     abstract public void addMonths(int months);
     abstract public void setDate(int date, int month, int year);
 }
