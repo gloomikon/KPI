@@ -3,7 +3,8 @@ package com.company;
 
 import java.util.Objects;
 
-public class Person {
+public class Person
+{
     private final String name;
     private final int age;
     private final boolean sex;
@@ -28,7 +29,8 @@ public class Person {
     }
 
     @Override
-    public final int hashCode() {
+    public final int hashCode()
+    {
         return Objects.hash(name, age, sex);
     }
 
