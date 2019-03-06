@@ -46,7 +46,6 @@ public class SchoolCard extends Card
     @Override
     public boolean checkPass()
     {
-        System.out.println(this.rides);
         if (finDate != null)
         {
             Date currentDay = new Date();

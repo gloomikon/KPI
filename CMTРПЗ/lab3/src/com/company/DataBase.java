@@ -25,4 +25,14 @@ public class DataBase
     {
         this.cardList.add(card);
     }
+    public Card getCard(int choice)
+    {
+        if (choice == 1)
+        {
+            for (Card card : cardList)
+                if (card.getType().equals("school"))
+                    return card;
+        }
+        return null;
+    }
 }

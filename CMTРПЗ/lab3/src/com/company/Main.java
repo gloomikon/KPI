@@ -5,26 +5,26 @@ public class Main {
 
     public static void main(String[] args)
     {
+        //Create Turniket
         Turniket turniket = new Turniket();
-        Card card = new SchoolCard(10);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
-        card.addRides(2);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
-        card.addDays(2);
-        card.addRides(2);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
-        card.setDate(4,1,2000);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
-        turniket.checkCard(card);
+
+        //Fill DataBase with Cards
+        for (int i = 0; i < 10; i++)
+        {
+            Card card = Card.createCard(1);
+            DataBase.getInstance().addCard(card);
+        }
+
+        //Get Card from DataBasa
+        Card myCard = DataBase.getInstance().getCard(1);
+        turniket.checkCard(myCard);
+        myCard.addRides(3);
+
+        turniket.checkCard(myCard);
+        turniket.checkCard(myCard);
+        turniket.checkCard(myCard);
+        turniket.checkCard(myCard);
+
         turniket.getInfo();
-
-
     }
 }
