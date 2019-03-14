@@ -50,25 +50,16 @@ public class MainTest {
         Assert.assertEquals(result, true);
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = IndexOutOfBoundsException.class)
     public void checkPickUpFalse()
     {
         Taxi taxi = new Taxi();
-        boolean result;
-        try
+
+        for (int i = 0; i < 7; i++)
         {
-            for (int i = 0; i < 7; i++)
-            {
-                Man man = new Man(1, "test");
-                taxi.pickUp(man);
-            }
-            result = true;
+            Man man = new Man(1, "test");
+            taxi.pickUp(man);
         }
-        catch (IndexOutOfBoundsException e)
-        {
-            result = false;
-        }
-        Assert.assertEquals(result, false);
     }
 
     @org.junit.Test
