@@ -30,7 +30,8 @@ public class Main
     public static void writeToFile(File file, ArrayList<String> strings) throws IOException
     {
         FileWriter fileWriter = new FileWriter(file);
-        for (String s: strings) {
+        for (String s: strings)
+        {
             fileWriter.write(s);
             fileWriter.write("\n");
         }
@@ -46,7 +47,8 @@ public class Main
     {
         File input = new File("./src/com/company/input.txt");
         File output = new File("./src/com/company/output.txt");
-        try {
+        try
+        {
             ArrayList<String> strings = readFromFile(input);
             sortByLength(strings);
             writeToFile(output, strings);
