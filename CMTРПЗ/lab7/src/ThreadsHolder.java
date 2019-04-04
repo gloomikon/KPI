@@ -45,9 +45,11 @@ public class ThreadsHolder {
         for (int i = 0; i < threads; i++) {
             MyThread mt = new MyThread();
             list.add(mt);
-            mt.start();
+            //mt.start();
         }
-
+    for (MyThread mt: list) {
+        mt.start();
+    }
         for (MyThread mt : list) {
             try {
                 mt.join();

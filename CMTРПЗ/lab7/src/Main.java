@@ -13,8 +13,8 @@ public class Main {
 //        TIME 871ms
 
 
-//        output = ThreadsHolder.getInstance().calculate(2);
-//        System.out.println(output);
+        output = ThreadsHolder.getInstance().calculate(100);
+        System.out.println(output);
 //
 //        PI is 3.1416328858367115
 //        THREADS 2
