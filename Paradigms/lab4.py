@@ -18,6 +18,15 @@ class Ticket:
 		print(" Arrival time: " + self.date2 + " " + self.time2)
 		print()
 
+class Conductor:
+	def __init__(self, work_number):
+		self.work_number = work_number
+	def check_passager(self, carriage, passager):
+		if (carriage.number == passager.ticket.carriage):
+			return True
+		else:
+			return False
+
 class Person:
 	def __init__(self,name, age, ticket):
 		self.name = name
@@ -27,9 +36,10 @@ class Person:
 class Carriage:
 	def __init__(self, number):
 		self.number = number
+		self.conductor = Conductor(number)
 		self.passagers = []
 	def add_passager(self, passager):
-		if (passager.ticket.carriage == self.number):
+		if (self.conductor.check_passager(self, passager)):
 			self.passagers.append(passager)
 		else:
 			print("Invalid carriage number")
