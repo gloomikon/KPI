@@ -1,0 +1,170 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    background: rgb(37, 137, 196);
+}
+.header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 10px;
+  }
+.main_header ul
+{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.main_header ul li
+{
+  padding-left: 20px;
+  align-content: center;
+}
+  .headerSearch {
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .logo
+  {
+      width: 55px;
+  }
+
+  .flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 200px;
+
+    -ms-box-orient: horizontal;
+    display: flex;
+
+    /* -webkit-justify-content: space-around; */
+    justify-content: space-around;
+    /* -webkit-flex-flow: row wrap; */
+    flex-flow: row wrap;
+    /* -webkit-align-items: stretch; */
+    align-items: stretch;
+  }
+
+  .header, .footer{
+    flex: 1 100%;
+  }
+  .main {
+    flex: 2;
+  }
+
+  .flex-item {
+
+    background: rgb(186, 207, 235);
+
+    color: white;
+    font-size: 2em;
+    border-bottom: 3px solid rgba(0,0,0,.2);
+  }
+
+  .sidebar {
+    width: 220px;
+    padding: 20px;
+    border-right: 3px solid rgba(4, 57, 119, 0.2);
+  }
+
+  @media screen and (max-width: 800px) {
+    .sidebar
+    {
+      width: 100%;
+    }
+    .sidebar ul
+    {
+      display: flex;
+    }
+}
+
+  .nav, article ul {
+    list-style: none;
+  }
+
+  .nav li a {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+    padding: 16px 16px 16px 16px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .nav li a:hover{
+    background: rgba(0,0,0,.3);
+  }
+
+  .nav li a::before {
+    font: 14px fontawesome;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+  }
+
+
+  input[type="text"] {
+    width: 200px;
+    vertical-align: 100%;
+}
+
+  .footer
+  {
+      text-align: center;
+      background: rgb(37, 137, 196);
+  }
+
+  .content
+  {
+    font-size: 0.6em;
+    padding: 10px;
+    border-bottom: 0;
+
+  }
+  .content h1
+  {
+    font-size: 2em;
+  }
+  .content ul li span
+  {
+    vertical-align: 100%;
+  }
+
+  .content a
+  {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .content_img
+  {
+    width: 200px;
+  }
+
+  .main p
+  {
+
+    vertical-align: 100%;
+  }
+
+  .avatar
+  {
+    width: 200px;
+  }
+
+  #profile
+  {
+    font-size: 0.3em;
+  }
