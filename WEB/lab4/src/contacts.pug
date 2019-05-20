@@ -41,22 +41,27 @@
 	<article class="flex-item content">
 		<h1>Fill the form for feedback!</h1>
 		<form action="/contacts.html" method="POST" enctype="multipart/form-data">
-			Full name:<br>
-			<input type="text" name = "fullname"><br>
-			Organisation:<br>
-			<input type="text" name = "organization"><br>
-			Type of apllication:<br>
+			<p>Full name:</p><br>
+			<input type="text" name = "fullname"> <br>
+			<p>Organisation:</p><br>
+			<input type="text" name = "organization"> <br>
+			<p>Type of apllication:</p><br>
 			<select name="app_type">
 				<option>Press</option>
 				<option>Partership</option>
 				<option>Another</option>
-			</select><br>
-			Your message:<br>
+			</select> <br>
+			<p>Your message:</p><br>
 			<textarea name="message"></textarea><br>
-			Attach file:<br>
+			<p>Attach file:</p><br>
 			<input type="file" name="file"><br>
 			<input type = "submit" value="SEND"><br>
 		</form>
+			case success
+				when 'true'
+					img(src = './media/success.png' width = "100px")
+				when 'false'
+					img(src = './media/failure.png' width = "100px")
 			<br>
 			<br>
 			<br>

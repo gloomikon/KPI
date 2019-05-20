@@ -15,12 +15,12 @@ let dbInterface = {
 				message TEXT,
 				filePath TEXT);`);
 		},
-		getRecords : function(req, res, callback) {
+		getRecords : function(callback) {
 			let list = [];
 			console.log("Getting records");
 			db.each(`SELECT * FROM contacts;`, [], (err, rows) => {
 				list.push(rows);
-			}, () => callback(req, res, list));
+			}, () => callback(list));
 		},
 		insertRecord : function(record) {
 			console.log("INSERTING");

@@ -6,6 +6,7 @@ const database = require(`${__dirname}/src/scripts/db.js`);
 const Busboy = require('busboy');
 const url = require('url');
 const pug = require('pug');
+const querystring  = require('querystring');
 
 const hostname = '0.0.0.0';
 const port = 8080;
@@ -37,7 +38,9 @@ function handlePostMethod(req, res, database) {
 	});
 	busboy.on('finish', function() {
 		success ? database.insertRecord(record, throwError) : console.log("INVALID FORM");
-		res.writeHead(303, { Connection: 'close', Location: '/contacts.html' });
+		success ? 
+			res.writeHead(303, {'Location' : `${req.url}?submited=true`}) :
+			res.writeHead(302, {'Location' : `${req.url}?submited=false`});
 		res.end();
 	});
 	req.pipe(busboy);
@@ -78,23 +81,27 @@ function defaultGet(req, res) {
 }
 
 function admin(req, res) {
-	contactsDB.getRecords(req, res, (request, response, list) => {
+	contactsDB.getRecords((list) => {
 		console.log(list);
 		let filePath = 'src/admin.pug';
 		const compiledFunction = pug.compileFile(filePath);
 		resp = compiledFunction({list: list});
-		response.writeHead(200, { 'Content-Type': "text/html" });
-		response.end(resp);
+		res.writeHead(200, { 'Content-Type': "text/html" });
+		res.end(resp);
 	});
 }
 
 function contacts(req, res) {
 	if (req.method == "GET") {
-		let filePath = 'src/contacts.pug';
-		fs.readFile(filePath, function(error, content) {
-			res.writeHead(200, { 'Content-Type': "text/html" });
-			res.end(content, 'utf-8');
-		});
+		let filePath = ('src/contacts.pug');
+		const compiledFunction = pug.compileFile(filePath);
+		let params = querystring.parse(url.parse(req.url).query);
+		console.log(params);
+		(params == null) ? 
+			resp = compiledFunction() :
+			resp = compiledFunction({success : params['submited']});
+		res.writeHead(200, { 'Content-Type': "text/html" });
+		res.end(resp);
 	}
 	else if (req.method == "POST") {
 		handlePostMethod(req, res, contactsDB);
@@ -103,7 +110,7 @@ function contacts(req, res) {
 
 /* START */
 http.createServer(function (req, res) {
-	let filePath = 'src' + url.parse(req.url).pathname;
+	let filePath = 'src' + url.parse(req.url).pathname.replace('pug', 'html');
 	(filePath == 'src/') ? filePath = 'src/index.html' : filePath = filePath;
-	(filePath in funcs) ?  funcs[filePath](req, res) : funcs['default'](req, res);
+	(filePath in funcs) ? funcs[filePath](req, res) : funcs['default'](req, res);
 }).listen(port, hostname, () => console.log(`Server works.`));
