@@ -7,27 +7,39 @@ const db = new sqlite3.Database(`${__dirname}/../saves/db.db`,
 
 let dbInterface = {
 	contacts : {
-		init : function(callback) {
-			db.run(`CREATE TABLE IF NOT EXISTS contacts (
-				id INTEGER PRIMARY KEY,
-				name TEXT,
-				org TEXT,
-				type TEXT,
-				body TEXT,
-				filePath TEXT);` , callback);
+		init : function() {
+			db.exec(`CREATE TABLE IF NOT EXISTS contacts (
+				fullname TEXT,
+				organization TEXT,
+				app_type TEXT,
+				message TEXT,
+				filePath TEXT);`);
 		},
-		getRecords : function(callback) {
-			db.all(`SELECT * FROM contacts;`, [], (err, rows) => {
-				callback(err, rows);
-			});
+		getRecords : function(req, res, callback) {
+			let list = [];
+			console.log("Getting records");
+			db.each(`SELECT * FROM contacts;`, [], (err, rows) => {
+				list.push(rows);
+			}, () => callback(req, res, list));
 		},
-		insertRecord : function(record, callback) {
-			console.log(`Inserting ${record}`);
-			decodeURI.run(`INSERT INTO contacts
-			(name, orgm type, body, filePath) VALUES
-			${record['name']}, ${record['org']}, ${record['type']}, ${record['body']}, ${record['filePath']};`, [], callback);
+		insertRecord : function(record) {
+			console.log("INSERTING");
+			db.exec(`INSERT INTO contacts VALUES
+			("${record['fullname']}", "${record["organization"]}", "${record["app_type"]}", "${record["message"]}", "${record["filePath"]}");`);
 		},
 	},
 }
+
+
+var func = function(callback) {
+    let list = [];
+    db.each('SElECT * FROM publications', (err, row) => {
+        list.push(row);
+    }, () => callback(list));
+}
+var callback = function(list) {
+    console.log(list);
+}
+func(callback);
 
 module.exports = dbInterface;

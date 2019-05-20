@@ -1,16 +1,49 @@
+/* IMPORTS */
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const database = require(`${__dirname}/src/scripts/db.js`);
 const Busboy = require('busboy');
 const url = require('url');
+const pug = require('pug');
 
 const hostname = '0.0.0.0';
 const port = 8080;
 
+let throwError = function(err) {
+	err ? throwError(err) : 0;
+}
+
+/* WORK WITH DATABASE */
 const contactsDB = database.contacts;
 contactsDB.init((err) => {throwError(err)});
 
+function handlePostMethod(req, res, database) {
+	let success = true, record = {}, busboy = new Busboy({headers : req.headers});
+	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+		if (filename) {
+			let filePath = path.join('./src/saves/files/', path.basename(filename));
+			record['filePath'] = path.basename(filename);
+			file.pipe(fs.createWriteStream(filePath));
+		}
+		else {
+			success = false;
+			file.resume();
+		}
+	});
+	busboy.on('field', function(fieldname, val, fieldnameTruncated, encoding, mimetype) {
+		record[fieldname] = val;
+		success = (val == "") ? false : success;
+	});
+	busboy.on('finish', function() {
+		success ? database.insertRecord(record, throwError) : console.log("INVALID FORM");
+		res.writeHead(303, { Connection: 'close', Location: '/contacts.html' });
+		res.end();
+	});
+	req.pipe(busboy);
+}
+
+/* WRITEHEAD TYPES */
 const types = {
 	".js"	:	"text/javascript",
 	".css"	:	"text/css",
@@ -26,73 +59,51 @@ const types = {
 	".webm"	:	"video/wemb",	
 };
 
+/* FUNCTIONS FOR PAGES HANDLING */
 const funcs = {
 	"src/contacts.html"	:	contacts,
+	"src/admin.html"	:	admin,
 	"default" 			:	defaultGet,
 };
 
 function defaultGet(req, res) {
 	let filePath = 'src' + url.parse(req.url).pathname;
-	if (filePath == 'src/')
-		filePath = 'src/index.html';
-	let extname = path.extname(filePath);    //returns the extension of the path, from the last occurrence of the .
+	(filePath == 'src/') ? filePath = 'src/index.html' : filePath = filePath;
+	let extname = path.extname(filePath);
 	let contentType = types[extname] || "text/html";
-
-	//console.log("FILEPATH = " + filePath);
-	//console.log("URL = " + req.url);
-
 	fs.readFile(filePath, function(error, content) {
 		res.writeHead(200, { 'Content-Type': contentType });
 		res.end(content, 'utf-8');
 	});
 }
 
+function admin(req, res) {
+	contactsDB.getRecords(req, res, (request, response, list) => {
+		console.log(list);
+		let filePath = 'src/admin.pug';
+		const compiledFunction = pug.compileFile(filePath);
+		resp = compiledFunction({list: list});
+		response.writeHead(200, { 'Content-Type': "text/html" });
+		response.end(resp);
+	});
+}
+
 function contacts(req, res) {
 	if (req.method == "GET") {
-		console.log("get");
-		defaultGet(req, res);
+		let filePath = 'src/contacts.pug';
+		fs.readFile(filePath, function(error, content) {
+			res.writeHead(200, { 'Content-Type': "text/html" });
+			res.end(content, 'utf-8');
+		});
 	}
 	else if (req.method == "POST") {
-		console.log("post");
-		let busboy = new Busboy({headers : req.headers});
-		let fields = [];
-		busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-			if (filename) {
-				let filePath = path.join('./saves/files/', path.basename(filename));
-				console.log(`FILEPATH = ${filePath}`);
-				fields.push(filePath);
-				file.pipe(fs.createWriteStream(filePath));
-			}
-			else {
-				console.log("NO FILE");
-				file.resume();
-			}
-		});
-		busboy.on('field', function(fieldname, val, fieldnameTruncated, encoding, mimetype) {
-			console.log("Fiels parse");
-			fields.push(val);
-		});
-		busboy.on('finish', function() {
-			contactsDB.insertRecord(fields, throwError);
-			console.log("Success");
-			res.writeHead(303, { Connection: 'close', Location: '/contacts.html' });
-			res.end();
-		});
-		req.pipe(busboy);
+		handlePostMethod(req, res, contactsDB);
 	}
 }
 
-let throwError = function(err) {
-	if (err) {
-		throw err;
-	}
-}
-
-
+/* START */
 http.createServer(function (req, res) {
-	console.log(req.method);
 	let filePath = 'src' + url.parse(req.url).pathname;
-	if (filePath == 'src/')
-		filePath = 'src/index.html';
+	(filePath == 'src/') ? filePath = 'src/index.html' : filePath = filePath;
 	(filePath in funcs) ?  funcs[filePath](req, res) : funcs['default'](req, res);
 }).listen(port, hostname, () => console.log(`Server works.`));
