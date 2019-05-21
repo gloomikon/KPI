@@ -18,8 +18,10 @@ let throwError = function(err) {
 /* WORK WITH DATABASE */
 const contactsDB = database.contacts;
 contactsDB.init((err) => {throwError(err)});
+const postsDB = database.posts;
+postsDB.init((err) => {throwError(err)});
 
-function handlePostMethod(req, res, database) {
+function handleContactsForm(req, res) {
 	let success = true, record = {}, busboy = new Busboy({headers : req.headers});
 	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 		if (filename) {
@@ -37,7 +39,7 @@ function handlePostMethod(req, res, database) {
 		success = (val == "") ? false : success;
 	});
 	busboy.on('finish', function() {
-		success ? database.insertRecord(record, throwError) : console.log("INVALID FORM");
+		success ? contactsDB.insertRecord(record, throwError) : console.log("INVALID FORM");
 		success ? 
 			res.writeHead(303, {'Location' : `${req.url}?submited=true`}) :
 			res.writeHead(302, {'Location' : `${req.url}?submited=false`});
@@ -46,7 +48,37 @@ function handlePostMethod(req, res, database) {
 	req.pipe(busboy);
 }
 
-/* WRITEHEAD TYPES */
+function handleProfileForm(req, res) {
+	let textFlag = false, fileFlag = false, record = {}, busboy = new Busboy({headers : req.headers});
+	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+		if (filename) {
+			let filePath = path.join('./src/saves/files/', path.basename(filename));
+			let extension = getType(path.basename(filename).substr(path.basename(filename).lastIndexOf('.') + 1).toLowerCase());
+			record['filePath'] = path.basename(filename);
+			record['mediaType'] = extension;
+			file.pipe(fs.createWriteStream(filePath));
+			fileFlag = true;
+		}
+		else {
+			file.resume();
+		}
+	});
+	busboy.on('field', function(fieldname, val, fieldnameTruncated, encoding, mimetype) {
+		record[fieldname] = val;
+		textFlag = (val != "") ? true : textFlag;
+	});
+	busboy.on('finish', function() {
+		record['time'] = "none";
+		(textFlag || fileFlag) ? postsDB.insertRecord(record, throwError) : console.log("INVALID FORM");
+		(textFlag || fileFlag) ? 
+			res.writeHead(303, {'Location' : `${req.url}?submited=true`}) :
+			res.writeHead(302, {'Location' : `${req.url}?submited=false`});
+		res.end();
+	});
+	req.pipe(busboy);
+}
+
+/* DIFFERENT TYPEDEFS */
 const types = {
 	".js"	:	"text/javascript",
 	".css"	:	"text/css",
@@ -62,8 +94,19 @@ const types = {
 	".webm"	:	"video/wemb",	
 };
 
+const	imgTypes	=	["png", "jpg", "jpeg"];
+const	videoTypes	=	["mp4", "wemb"];
+const	musicTypes	=	["wav", "mp3"];
+
+function getType(extension) {
+	console.log(`extension = ${extension}`);
+	return (imgTypes.includes(extension)) ? "img" :
+		(videoTypes.includes(extension)) ? "video" :
+		(musicTypes.includes(extension)) ? "music" : "file";
+}
 /* FUNCTIONS FOR PAGES HANDLING */
 const funcs = {
+	"src/profile.html"	:	profile,
 	"src/contacts.html"	:	contacts,
 	"src/admin.html"	:	admin,
 	"default" 			:	defaultGet,
@@ -91,12 +134,33 @@ function admin(req, res) {
 	});
 }
 
+function profile(req, res) {
+	if (req.method == "GET") {
+		postsDB.getRecords((list) => {
+			console.log(list);
+			console.log("anime");
+			let filePath = 'src/profile.pug';
+			const compiledFunction = pug.compileFile(filePath);
+			let params = querystring.parse(url.parse(req.url).query);
+			console.log(params);
+			(params == null) ? 
+				resp = compiledFunction({list: list}) :
+				resp = compiledFunction({list: list,
+										success : params['submited']});
+			res.writeHead(200, { 'Content-Type': "text/html" });
+			res.end(resp);
+		});
+	}
+	else if (req.method == "POST") {
+		handleProfileForm(req, res);
+	}
+}
+
 function contacts(req, res) {
 	if (req.method == "GET") {
 		let filePath = ('src/contacts.pug');
 		const compiledFunction = pug.compileFile(filePath);
 		let params = querystring.parse(url.parse(req.url).query);
-		console.log(params);
 		(params == null) ? 
 			resp = compiledFunction() :
 			resp = compiledFunction({success : params['submited']});
@@ -104,7 +168,7 @@ function contacts(req, res) {
 		res.end(resp);
 	}
 	else if (req.method == "POST") {
-		handlePostMethod(req, res, contactsDB);
+		handleContactsForm(req, res);
 	}
 }
 

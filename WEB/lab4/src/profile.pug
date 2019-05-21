@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="css/style.css">
+	<title>
+	</title>
+</head>
+
+<body>
+<ul class="flex-container">
+	<li class="flex-item header">
+	<header>
+		<ul>
+		<li><img src="media/logo.png" alt="logo" class="logo"></li>
+		<li>BT</li>
+		<li class="headerSearch">
+			<input placeholder="Search..." />
+		</li>
+		<li><button>Log out</button></li>
+		</ul>
+	</header>
+	</li>
+	<aside class="flex-item sidebar">
+	<li>
+
+		<ul class="nav">
+		<li><a href="profile.html">Profile</a></li>
+		<li><a href="index.html">Menu</a></li>
+		<li><a href="music.html">Music</a></li>
+		<li><a href="video.html">Video</a></li>
+		<li><a href="contacts.html">Contacts</a></li>
+		</ul>
+	</li>
+	</aside>
+	<li class="flex-item main">
+	<section class="flex-item main_header">
+		<ul>
+		<li><img src="media/avatar.jpg" alt="avatar" class="avatar"></li>
+		<li>
+			<p id="profile"><b>Nikolay Zhurba <br><br></b><i>Kiev, Ukraine<br><br></b></i>if you don't stand for something, you fall for everything</p>
+		</li>
+		</ul>
+	</section>
+	<article class="flex-item content">
+		<h1>Create new post</h1>
+		<form action="/profile.html" method="POST" enctype="multipart/form-data">
+			<p>Your message:</p><br>
+			<textarea name="message"></textarea><br>
+			<p>Attach file:</p>
+			<input type="file" name="file"><br>
+			<input type = "submit" value="SEND"><br>
+		</form><br>
+		case success
+				when 'true'
+					img(src = './media/success.png' width = "69px")
+				when 'false'
+					img(src = './media/failure.png' width = "69px")
+		<hr><br>
+		<ul>
+		<li>
+			each item in list
+				case item.message
+					when ''
+					default
+						p #{item.message}
+				case item.mediaType
+					when 'img'
+						img(src = `/saves/files/${item.filePath}` alt = "img" width = "200px")
+					when 'video'
+						video(width="320" height="240" controls preload="auto")
+							source(src=`/saves/files/${item.filePath}` type="video/webm")
+							p Your browser does not support the video tag.
+					when 'music'
+						audio(controls)
+							source(src = `/saves/files/${item.filePath}` type = "audio/mp3")
+							p Your browser doesn't support the audio tag.
+					when 'file'
+						a(href = `saves/files/${item.filePath}`)
+							p Attachment: #{item.filePath}
+				<hr><br>
+		</li>
+		</ul>
+	</article>
+	</li>
+	<li class="flex-item footer">(C) Designed by Kolumbia 2019</li>
+</ul>
+</body>
+
+</html>
