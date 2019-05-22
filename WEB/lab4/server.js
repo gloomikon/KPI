@@ -68,7 +68,7 @@ function handleProfileForm(req, res) {
 		textFlag = (val != "") ? true : textFlag;
 	});
 	busboy.on('finish', function() {
-		record['time'] = "none";
+		record['time'] = (new Date()).toString();
 		(textFlag || fileFlag) ? postsDB.insertRecord(record, throwError) : console.log("INVALID FORM");
 		(textFlag || fileFlag) ? 
 			res.writeHead(303, {'Location' : `${req.url}?submited=true`}) :
@@ -104,11 +104,13 @@ function getType(extension) {
 		(videoTypes.includes(extension)) ? "video" :
 		(musicTypes.includes(extension)) ? "music" : "file";
 }
+
 /* FUNCTIONS FOR PAGES HANDLING */
 const funcs = {
 	"src/profile.html"	:	profile,
 	"src/contacts.html"	:	contacts,
 	"src/admin.html"	:	admin,
+	"error"				:	error,
 	"default" 			:	defaultGet,
 };
 
@@ -119,6 +121,14 @@ function defaultGet(req, res) {
 	let contentType = types[extname] || "text/html";
 	fs.readFile(filePath, function(error, content) {
 		res.writeHead(200, { 'Content-Type': contentType });
+		res.end(content, 'utf-8');
+	});
+}
+
+function error(req, res) {
+	let filePath = 'src/404.html';
+	fs.readFile(filePath, function(error, content) {
+		res.writeHead(200, { 'Content-Type' : 'text/html'});
 		res.end(content, 'utf-8');
 	});
 }
@@ -138,7 +148,11 @@ function profile(req, res) {
 	if (req.method == "GET") {
 		postsDB.getRecords((list) => {
 			console.log(list);
-			console.log("anime");
+			list.sort(function(a, b) {
+				let dateA = new Date(a['time']);
+				let dateB = new Date(b['time']);
+				return dateA = dateB; 
+			})
 			let filePath = 'src/profile.pug';
 			const compiledFunction = pug.compileFile(filePath);
 			let params = querystring.parse(url.parse(req.url).query);
@@ -174,7 +188,12 @@ function contacts(req, res) {
 
 /* START */
 http.createServer(function (req, res) {
-	let filePath = 'src' + url.parse(req.url).pathname.replace('pug', 'html');
+	try {
+		let filePath = 'src' + url.parse(req.url).pathname.replace('pug', 'html');
 	(filePath == 'src/') ? filePath = 'src/index.html' : filePath = filePath;
 	(filePath in funcs) ? funcs[filePath](req, res) : funcs['default'](req, res);
+	}
+	catch (error) {
+		funcs['error'](req, res);
+	}
 }).listen(port, hostname, () => console.log(`Server works.`));
