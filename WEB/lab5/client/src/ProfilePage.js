@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import avatar from './media/avatar.jpg'
+import avatar from './media/avatar.jpg';
 
 class ProfilePage extends Component {
 	constructor(props) {

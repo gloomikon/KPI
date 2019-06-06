@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Header , LeftSideMenu, Footer } from './Statics';
 import ProfilePage from './ProfilePage';
+import ContactsPage from './ContactsPage';
 import './css/style.css';
 
 class App extends Component {
@@ -20,6 +20,7 @@ class App extends Component {
 							<Redirect exact from='/' to='/index' />
 							{/* <Route exact path='/' component={IndexPage} /> */}
 							<Route path='/profile' component={ProfilePage} />
+							<Route path='/contacts' component={ContactsPage} />
 						</Switch>
 					</li>
 					<Footer />

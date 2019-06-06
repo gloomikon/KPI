@@ -25,7 +25,7 @@ const Header = () => (
 
 const LeftSideMenu = () => (
 	<aside className='flex-item sidebar'>
-		<ul class='nav'>
+		<ul className='nav'>
 			<li><Link to='/profile'>Profile</Link></li>
 			<li><Link to='/menu'>Menu</Link></li>
 			<li><Link to='/music'>Music</Link></li>

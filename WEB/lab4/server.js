@@ -22,6 +22,7 @@ const postsDB = database.posts;
 postsDB.init((err) => {throwError(err)});
 
 function handleContactsForm(req, res) {
+  console.log(req.headers);
 	let success = true, record = {}, busboy = new Busboy({headers : req.headers});
 	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 		if (filename) {
