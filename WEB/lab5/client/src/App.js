@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { Header , LeftSideMenu, Footer } from './Statics';
 import ProfilePage from './ProfilePage';
 import ContactsPage from './ContactsPage';
+import AdminPage from './AdminPage';
 import './css/style.css';
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
 							{/* <Route exact path='/' component={IndexPage} /> */}
 							<Route path='/profile' component={ProfilePage} />
 							<Route path='/contacts' component={ContactsPage} />
+							<Route path='/admin' component={AdminPage} />
 						</Switch>
 					</li>
 					<Footer />
