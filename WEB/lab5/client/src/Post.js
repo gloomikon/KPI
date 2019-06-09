@@ -1,13 +1,11 @@
 import React from "react";
 import './Post.css';
-import { exists } from "fs";
 
 const	imgTypes	=	["png", "jpg", "jpeg"];
 const	videoTypes	=	["mp4", "wemb"];
 const	musicTypes	=	["wav", "mp3"];
 
 function getType(extension) {
-	console.log(`extension = ${extension}`);
 	return (imgTypes.includes(extension)) ? "img" :
 		(videoTypes.includes(extension)) ? "video" :
 		(musicTypes.includes(extension)) ? "music" : "file";
@@ -29,7 +27,7 @@ class Post extends React.Component {
 		this.handleDelete = this.handleDelete.bind(this);
 	}
 	handleSubmit(event) {
-		if (this.state.file != "" || this.state.text != "") { 
+		if (this.state.file !== "" || this.state.text !== "") { 
 			this.setState(prev => prev.edited=false);
 		}
 		else {
@@ -65,7 +63,7 @@ class Post extends React.Component {
 						<p>{this.state.time}</p>
 						<p>{this.state.text}</p>
 						{
-							(extension == 'img') ? <img src = {require(`./files/${this.state.file}`)} alt="post" width='200px'/> : <div/>
+							(extension === 'img') ? <img src = {require(`./files/${this.state.file}`)} alt="post" width='200px'/> : <div/>
 						}
 						<div>
 							<button onClick={this.handleClick}>Change</button> 

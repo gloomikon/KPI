@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import sha256 from 'crypto-js/sha256';
-import decode from "jwt-decode";
+import { Header, LeftSideMenu, Footer } from './Statics'; 
 
 class SignUpPage extends Component {
 	constructor(props) {
@@ -10,6 +9,7 @@ class SignUpPage extends Component {
 			login: '',
 			fullname: '',
 			password: '',
+			success: null,
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,39 +31,56 @@ class SignUpPage extends Component {
 			body: data,
 			}
 		)
-		.then((res) => res.text())
-		.then((token) => localStorage.setItem('token', token))
-		.then(() => this.props.history.push('/profile'))
-		.catch((err) => alert('User already exists'));
+		.then((res) => {
+			this.setState({ success: res.ok ? true : false });
+			return res.text();
+		})
+		.then((token) => {
+			if (this.state.success) {
+				localStorage.setItem('token', token);
+				this.props.history.push('/profile');
+			}
+			else {
+				alert('Invalid password or login');	
+			}
+		})
+		.catch((err) => console.log(err));
+			
 	}
-
 	render() {
 		return (
-			<div>
-				<h1>It is a registration page</h1><br/> <hr/> <br/>
-				<h3>Please, enter a login and password and your full name to create an account!</h3>
-				<br/>
-				<form onSubmit={this.handleSubmit} className="Form" id="signUp" style={{margin: 'auto', width: '300px', height:'310px'}}> 
-					<input type="text" 
-						placeholder=" Login" 
-						name="login"
-						value={this.state.login}
-						onChange={this.handleChange} required/><br/>
-					<input type="text" 
-						placeholder=" Fullname" 
-						name="fullname"
-						value={this.state.fullname}
-						onChange={this.handleChange} required/><br/>
-					<input type="password" 
-						name="password" 
-						placeholder=' Password'
-						value={this.state.password} 
-						onChange={this.handleChange}/><br/>
-					<button onClick={this.handleSubmit}>Submit</button> 
-			</form>
-			We are happy to have you with us! <br/>
-			Keep it cool!<br/><br/>
-			</div>
+			<ul className='flex-container'>
+				<li className='flex-item header'>
+					<Header isLoggedIn={this.state.isLoggedIn} />
+				</li>
+				<LeftSideMenu />
+					<li className='flex-item main'>
+					<h1>It is a registration page</h1><br/> <hr/> <br/>
+					<h3>Please, enter a login and password and your full name to create an account!</h3>
+					<br/>
+					<form onSubmit={this.handleSubmit} className="Form" id="signUp" style={{margin: 'auto', width: '300px', height:'310px'}}> 
+						<input type="text" 
+							placeholder=" Login" 
+							name="login"
+							value={this.state.login}
+							onChange={this.handleChange} required/><br/>
+						<input type="text" 
+							placeholder=" Fullname" 
+							name="fullname"
+							value={this.state.fullname}
+							onChange={this.handleChange} required/><br/>
+						<input type="password" 
+							name="password" 
+							placeholder=' Password'
+							value={this.state.password} 
+							onChange={this.handleChange}/><br/>
+						<button onClick={this.handleSubmit}>Submit</button> 
+					</form>
+					We are happy to have you with us! <br/>
+					Keep it cool!<br/><br/>
+				</li>
+				<Footer />
+			</ul>
 		)
 	}
 }

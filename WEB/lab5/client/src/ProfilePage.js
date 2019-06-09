@@ -14,16 +14,14 @@ class ProfilePage extends Component {
 			data: null,
 			fullname: '',
 		}
-		this.handleSubmit = this.handleSubmit.bind(this);	
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	componentDidMount() {
 		if (this.state.currentUser)
 		{
 			fetch(`/profilename?login=${this.state.currentUser}`)
 				.then(res => res.text())
-				.then((fullname) => {
-					this.setState({ fullname: fullname });
-					console.log(fullname);})
+				.then((fullname) =>  this.setState({ fullname: fullname }))
 				.catch((err) => console.log(err));
 			fetch(`/profileposts?login=${this.state.currentUser}`)
 				.then(res => res.json())
@@ -40,16 +38,19 @@ class ProfilePage extends Component {
 			method: 'POST',
 			body: data,
 		}).then((res) => {
-			(res.ok) ? alert('Post added successfully!') : alert('Post hasn\'t been added');
+			if (res.ok) {
+				let newdata = {};
+				const olddata = this.state.data;
+				for (let elem of data)
+					newdata[elem[0]] = elem[1];
+				newdata.filePath = newdata.filePath.name;
+				this.setState({ data: olddata.concat(newdata)});
+				console.log(this.state.data);
+			}
+			else {
+				alert('Post has not been added');
+			}
 		}).catch((err) => console.log(err));
-		let newdata = {};
-		const olddata = this.state.data;
-		for (let elem of data) {
-			console.log(elem[0], elem[1]);
-			newdata[elem[0]] = elem[1];
-		}
-		console.log(newdata);
-		this.setState({ data: olddata.concat(newdata)})
 	}
 
 	renderOnePost(post) {
@@ -77,11 +78,11 @@ class ProfilePage extends Component {
 				{
 					this.state.currentUser ? (
 						<li className='flex-item main'>
-					<section class='flex-item main_header'>
+					<section className='flex-item main_header'>
 						<ul>
 							<li><img src={avatar} alt='avatar' className='avatar' /></li>
 							<li>
-								<p id='profile'><b>{this.state.fullname}<br/><br/></b><i>Kiev, Ukraine<br/><br/></i>if you don't stand for something, you fall for everything</p>
+								<p id='profile'><b>{this.state.fullname}<br/><br/></b><i>Kiev, Ukraine<br/><br/></i>Keep it cool!</p>
 							</li>
 						</ul>
 					</section>
@@ -91,7 +92,7 @@ class ProfilePage extends Component {
 							<p>Your message:</p><br/>
 							<textarea name='message' /><br/>
 							<p>Attach file:</p>
-							<input type='file' name='file' /><br/>
+							<input type='file' name='filePath' /><br/>
 							<input type='submit' value='SEND' />
 						</form>
 					<hr/>
@@ -102,7 +103,7 @@ class ProfilePage extends Component {
 					:
 					(
 						<li className='flex-item main'>
-					<section class='flex-item main_header'>
+					<section className='flex-item main_header'>
 						<h1>You are not logged in!</h1>
 					</section>
 					<article className='flext-item content'>

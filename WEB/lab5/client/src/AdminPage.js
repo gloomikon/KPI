@@ -30,7 +30,7 @@ class ContactsPage extends Component {
 			<div>
 				<p>Name: {record.fullname}</p>
 				<p>Organization: {record.organization}</p>
-				<p>Type: {record.type}</p>
+				<p>Type: {record.app_type}</p>
 				<p>Text: {record.message}</p>
 				<br/>
 				<img src={null} alt={record.filePath} id={record.filePath} width='300px' />

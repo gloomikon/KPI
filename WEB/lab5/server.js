@@ -118,6 +118,7 @@ function signup(req, res) {
 	});
 	req.on('end', function() {
 		const registration = JSON.parse(body);
+		console.log(registration);
 		MongoClient.connect(mongodbUrl, function(err, db) {
 			if (err) throw err;
 			const dbo = db.db('database');
@@ -134,10 +135,8 @@ function signup(req, res) {
 						dbo.collection('users').insertOne(registration, function(err, result) {
 							if (err) throw err;
 							console.log('Accout created');
-							
-							let token = jwt.sign({login: result.login}, secret);
+							let token = jwt.sign({login: registration.login}, secret);
 							res.setHeader('Content-Type', 'application/json');
-							console.log(token);
 							res.end(token);
 							db.close();
 						});
@@ -166,6 +165,7 @@ function signin(req, res) {
 						const token = jwt.sign({login: result.login}, secret);
 						res.setHeader('Content-Type', 'application/json');
 						res.end(token);
+						console.log(token);
 						db.close();
 					}
 					else {
@@ -184,7 +184,7 @@ function contacts(req, res) {
 	let success = true, record = {}, busboy = new Busboy({headers : req.headers});
 	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 		if (filename) {
-			let filePath = path.join('/client/src/files/', path.basename(filename));
+			let filePath = path.join('./client/src/files/', path.basename(filename));
 			record['filePath'] = path.basename(filename);
 			file.pipe(fs.createWriteStream(filePath));
 		}
