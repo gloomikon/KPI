@@ -25,12 +25,15 @@ class SignInPage extends Component {
 		let data = JSON.stringify({
 			login: this.state.login,
 			password: sha256(this.state.password).toString()});
-		fetch('http://localhost:8080/login', {
+		fetch('/login', {
 			method: 'POST',
 			body: data,
 			}
 		)
-		.then((res) => {res.ok ? alert('Welcome') : alert('Invalid pass or login!')})
+		.then((res) => res.text())
+		.then((token) => localStorage.setItem('token', token))
+		.then(() => this.props.history.push('/profile'))
+		.catch((err) => alert('User already exists'));
 	}
 
 	render() {

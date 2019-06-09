@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Header, LeftSideMenu, Footer } from './Statics'; 
 
 class ContactsPage extends Component {
 	constructor(props) {
 		super(props);
+		const token = localStorage.getItem('token');
 		this.state = {
+			isLoggedIn: token ? true: false,
 			data: null,
 		}
 	}
@@ -11,7 +14,7 @@ class ContactsPage extends Component {
 	componentDidMount() {
 		fetch('/admin')
 			.then(res => res.json())
-			.then((data) => this.setState({ data: data}))
+			.then((data) => this.setState({ data: data }))
 			.catch((err) => console.log(err));
 	}
 
@@ -44,7 +47,12 @@ class ContactsPage extends Component {
 			}
 		}
 		return (
-			<div>
+			<ul className='flex-container'>
+				<li className='flex-item header'>
+					<Header isLoggedIn={this.state.isLoggedIn} />
+				</li>
+				<LeftSideMenu />
+				<li className='flex-item main'>
 				<section className="flex-item main_header">
 					Admin Page
 				</section>
@@ -52,7 +60,9 @@ class ContactsPage extends Component {
 					<h1>All records</h1>
 					{records}
 				</article>
-			</div>
+				</li>
+				<Footer />
+			</ul>
 		)
 	}
 }

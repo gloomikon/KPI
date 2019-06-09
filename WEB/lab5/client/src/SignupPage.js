@@ -26,19 +26,14 @@ class SignUpPage extends Component {
 			login: this.state.login,
 			fullname: this.state.fullname,
 			password: sha256(this.state.password).toString()});
-		fetch('http://localhost:8080/reg', {
+		fetch('/reg', {
 			method: 'POST',
 			body: data,
 			}
 		)
-		.then((res) => {
-			//console.log(`req.text = ${res.text()}`);
-			return res.text().then((token) => console.log('HELLO' + token));
-		})
-		// .then((token) => {
-		// 	localStorage.setItem('token', token);
-		// })
-		//.then(() => {this.props.history.push('/profile')})
+		.then((res) => res.text())
+		.then((token) => localStorage.setItem('token', token))
+		.then(() => this.props.history.push('/profile'))
 		.catch((err) => alert('User already exists'));
 	}
 

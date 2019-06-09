@@ -13,6 +13,9 @@ class Header extends Component {
 		const token = localStorage.getItem('token');
 		this.setState({ token : token });
 	}
+	handleClick() {
+		localStorage.removeItem('token');
+	}
 	render() {
 		return (
 			<header>
@@ -28,7 +31,7 @@ class Header extends Component {
 					</li>
 					<li>
 						{
-							this.state.token ? <button> Log Out </button> :
+							this.state.token ? <button><Link to='signin' onClick={this.handleClick}> Log Out </Link></button> :
 							<button><Link to='/signin'> Log In </Link></button>
 						}
 					</li> 
