@@ -5,6 +5,8 @@ import { Header , LeftSideMenu, Footer } from './Statics';
 import ProfilePage from './ProfilePage';
 import ContactsPage from './ContactsPage';
 import AdminPage from './AdminPage';
+import SigninPage from './SigninPage';
+import SignupPage from './SignupPage';
 import './css/style.css';
 
 class App extends Component {
@@ -23,6 +25,8 @@ class App extends Component {
 							<Route path='/profile' component={ProfilePage} />
 							<Route path='/contacts' component={ContactsPage} />
 							<Route path='/admin' component={AdminPage} />
+							<Route path='/signin' component={SigninPage} />
+							<Route path='/signup' component={SignupPage} />
 						</Switch>
 					</li>
 					<Footer />

@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './media/logo.png';
 import { Link } from 'react-router-dom';
 
-const Header = () => (
-	<header>
-		<ul>
-			<li>
-				<img src={logo} alt='logo' className='logo'/>
-			</li>
-			<li>
-				BT
-			</li>
-			<li className='headerSearch'>
-				<input placeholder='Search...' />
-			</li>
-			<li>
-				<button>
-					Log Out
-				</button>
-			</li> 
-		</ul>
-	</header>
-);
+class Header extends Component {
+	constructor() {
+		super();
+		this.state = {
+			token: null,
+		}
+	}
+	componentDidMount() {
+		const token = localStorage.getItem('token');
+		this.setState({ token : token });
+	}
+	render() {
+		return (
+			<header>
+				<ul>
+					<li>
+						<img src={logo} alt='logo' className='logo'/>
+					</li>
+					<li>
+						BT
+					</li>
+					<li className='headerSearch'>
+						<input placeholder='Search...' />
+					</li>
+					<li>
+						{
+							this.state.token ? <button> Log Out </button> :
+							<button><Link to='/signin'> Log In </Link></button>
+						}
+					</li> 
+				</ul>
+			</header>
+		)
+	}
+}
 
 const LeftSideMenu = () => (
 	<aside className='flex-item sidebar'>

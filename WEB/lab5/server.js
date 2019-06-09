@@ -4,13 +4,17 @@ const http = require('http');
 const Busboy = require('busboy');
 const path = require('path');
 const fs = require('fs');
-
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const secret = 'first thought — best thought';
 const hostname = '0.0.0.0';
 const port = 8080;
 
 const funcList = {
 	'/contacts'	:	contacts,
 	'/admin'	:	admin,
+	'/reg'		:	signup,
+	'/login'	:	signin,
 	'default'	:	defaultf,
 };
 
@@ -28,6 +32,79 @@ const types = {
 	"mp4"	:	"video/mp4",
 	"webm"	:	"video/wemb",	
 };
+
+function signup(req, res) {
+	let body = '';
+	req.on('data', function(data) {
+		body += data;
+		if (body.length > 1000000)
+			req.connection.destroy();
+	});
+	req.on('end', function() {
+		const registration = JSON.parse(body);
+		console.log(registration);
+		MongoClient.connect(mongodbUrl, function(err, db) {
+			if (err) throw err;
+			const dbo = db.db('database');
+			dbo.collection('users').findOne({ login: registration.login },
+				function(err, result) {
+					if (err) throw err;
+					if (result) {
+						console.log('User already exists');
+						res.writeHead(400, {'Content-Type': 'text/plain'});
+						res.end('User alredy exists!');
+						db.close();
+					}
+					else {
+						dbo.collection('users').insertOne(registration, function(err, result) {
+							if (err) throw err;
+							console.log('Accout created');
+							
+							let token = jwt.sign({login: result.login}, secret);
+							res.setHeader('Content-Type', 'application/json');
+							console.log(token);
+							res.end(token);
+							db.close();
+						});
+					}
+				});
+		});
+	});
+}
+
+function signin(req, res) {
+	let body = '';
+	req.on('data', function(data) {
+		body += data;
+		if (body.length > 1000000)
+			req.connection.destroy();
+	});
+	req.on('end', function() {
+		const registration = JSON.parse(body);
+		console.log(registration);
+		MongoClient.connect(mongodbUrl, function(err, db) {
+			if (err) throw err;
+			const dbo = db.db('database');
+			dbo.collection('users').findOne({ login: registration.login, 
+				password: registration.password }, function(err, result) {
+					if (err) throw err;
+					if (result) {
+						const token = jwt.sign({login: result.login}, secret);
+						res.setHeader('Content-Type', 'application/json');
+						res.end(token);
+						db.close();
+					}
+					else {
+						console.log('Invalid pass || login');
+						res.writeHead(400, {'Content-Type': 'text/plain'});
+						res.write('Invalid login or password!\n');
+						res.end();
+						db.close();
+					}
+				})
+		})
+	})
+}
 
 function contacts(req, res) {
 	let success = true, record = {}, busboy = new Busboy({headers : req.headers});
