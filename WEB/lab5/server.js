@@ -38,6 +38,7 @@ const funcList = {
 	'/creategroup'		:	creategroup,
 	'/getgroupinfo'		:	getgroupinfo,
 	'/addusertogroup'	:	addusertogroup,
+	'/deluserfromgroup'	:	deluserfromgroup,
 	'default'			:	defaultf,
 };
 
@@ -55,6 +56,45 @@ const types = {
 	"mp4"	:	"video/mp4",
 	"webm"	:	"video/wemb",	
 };
+
+function deluserfromgroup(req, res) {
+	let { group, user } = querystring.parse(url.parse(req.url).query);
+	MongoClient.connect(mongodbUrl, function(err, db) {
+		if (err) throw err;
+		const dbo = db.db('database');
+		dbo.collection('users').findOne({ 'login': user }, (err, result) => {
+			if (err) throw err;
+			if (result) {
+				console.log(2);
+				dbo.collection('groups').findOne({'_id' : ObjectID(group), 'users' : user }, (err, result) => {
+					if (err) throw err;
+					if (result) {
+						console.log(3);
+						dbo.collection('groups').updateOne({ '_id': ObjectID(group) } ,
+						{ $pull: {'users' : user }}, function(err, result) {
+							if (err) throw err;
+							else {
+								res.writeHead(200, {'Content-Type': 'text/plain'});
+								res.end('User added');
+								db.close();
+							}
+						});
+					}
+					else {
+						res.writeHead(400, {'Content-Type': 'text/plain'});
+						res.end('No such user');
+						db.close();
+					}
+				})
+			}
+			else {
+				res.writeHead(400, {'Content-Type': 'text/plain'});
+				res.end('No such user');
+				db.close();
+			};
+		});
+	});
+}
 
 function addusertogroup(req, res) {
 	let { group, user } = querystring.parse(url.parse(req.url).query);
