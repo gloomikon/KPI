@@ -39,6 +39,17 @@ class GroupPage extends Component {
 	handleDelete(event) {
 		event.preventDefault();
 		document.getElementById('user').reset();
+		const id = this.props.match.params.id;
+		fetch(`/deluserfromgroup?group=${id}&user=${this.state.user}`)
+		.then((res) => {
+			if (res.ok) {
+				alert('User deleted');
+			}
+			else {
+				alert('Error occured');
+			}
+		})
+		.catch(err => console.log(err));
 	}
 
 	handleChange(event) {
