@@ -25,18 +25,20 @@ function date() {
 }
 
 const funcList = {
-	'/contacts'		:	contacts,
-	'/admin'		:	admin,
-	'/reg'			:	signup,
-	'/login'		:	signin,
-	'/profilename'	:	profilename,
-	'/profileposts'	:	profileposts,
-	'/addpost'		:	addpost,
-	'/deletePost'	:	deletePost,
-	'/updatePost'	:	updatePost,
-	'/getgroups'	:	getgroups,
-	'/creategroup'	:	creategroup,
-	'default'		:	defaultf,
+	'/contacts'			:	contacts,
+	'/admin'			:	admin,
+	'/reg'				:	signup,
+	'/login'			:	signin,
+	'/profilename'		:	profilename,
+	'/profileposts'		:	profileposts,
+	'/addpost'			:	addpost,
+	'/deletePost'		:	deletePost,
+	'/updatePost'		:	updatePost,
+	'/getgroups'		:	getgroups,
+	'/creategroup'		:	creategroup,
+	'/getgroupinfo'		:	getgroupinfo,
+	'/addusertogroup'	:	addusertogroup,
+	'default'			:	defaultf,
 };
 
 const types = {
@@ -53,6 +55,57 @@ const types = {
 	"mp4"	:	"video/mp4",
 	"webm"	:	"video/wemb",	
 };
+
+function addusertogroup(req, res) {
+	let { group, user } = querystring.parse(url.parse(req.url).query);
+	MongoClient.connect(mongodbUrl, function(err, db) {
+		if (err) throw err;
+		const dbo = db.db('database');
+		dbo.collection('groups').findOne({'_id' : ObjectID(group), 'users' : user }, (err, result) => {
+			if (err) throw err;
+			if (result) {
+				res.writeHead(400, {'Content-Type': 'text/plain'});
+				res.end('User already in group');
+				db.close();
+			}
+			else {
+				dbo.collection('users').findOne({ 'login': user }, (err, result) => {
+					if (err) throw err;
+					if (result) {
+						dbo.collection('groups').updateOne({ '_id': ObjectID(group) } ,
+						{ $push: {'users' : user }}, function(err, result) {
+							if (err) throw err;
+							else {
+								res.writeHead(200, {'Content-Type': 'text/plain'});
+								res.end('User added');
+								db.close();
+							}
+						});
+					}
+					else {
+						res.writeHead(400, {'Content-Type': 'text/plain'});
+						res.end('No such user');
+						db.close();
+					}
+				})
+			};
+		});
+	});
+}
+
+function getgroupinfo(req, res) {
+	let group = querystring.parse(url.parse(req.url).query).group;
+	MongoClient.connect(mongodbUrl, function(err, db) {
+		if (err) throw err;
+		const dbo = db.db('database');
+		dbo.collection('groups').findOne({'_id': ObjectID(group)}, (err, result) => {
+			if (err) throw err;
+			res.setHeader('Content-Type', 'application/json');
+			res.end(JSON.stringify(result));
+			db.close();
+		});
+	});
+}
 
 function creategroup(req, res) {
 	let body = '';
@@ -77,7 +130,6 @@ function creategroup(req, res) {
 					dbo.collection('groups').insertOne({ 'admin' : admin, 'name' : group, 'users':[admin]},
 					function(err, result) {
 						if (err) throw err;
-						else console.log('Group created');
 						res.writeHead(200, {'Content-Type': 'text/plain'});
 						res.end('User alredy exists!');
 						db.close();
@@ -114,7 +166,6 @@ function deletePost(req, res) {
 		MongoClient.connect(mongodbUrl, function(err, db) {
 			if (err) throw err;
 			const dbo = db.db('database');
-			console.log(`id=${rem.id}`);
 			dbo.collection('posts').remove({ '_id': ObjectID(rem.id)})
 		});
 		res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -134,11 +185,9 @@ function updatePost(req, res) {
 		MongoClient.connect(mongodbUrl, function(err, db) {
 			if (err) throw err;
 			const dbo = db.db('database');
-			console.log(`id=${upd.id}`);
 			dbo.collection('posts').updateOne({ '_id': ObjectID(upd.id)}, 
 				{ $set: { 'message' : upd.text } }, function(err, result) {
 					if (err) throw err
-					else console.log(result);
 			})})
 		res.writeHead(200, {'Content-Type': 'text/plain'});
 		res.end('User alredy exists!');
@@ -170,7 +219,6 @@ function addpost(req, res) {
 				const dbo = db.db('database');
 				dbo.collection('posts').insertOne(record, (err, result) => {
 					if (err) throw err;
-					console.log('Post added');
 					db.close();
 				});
 			});
@@ -178,7 +226,6 @@ function addpost(req, res) {
 			res.write('Nice');
 			res.end();
 		} else {
-			console.log('BAD');
 			res.writeHead(400, {'Content-Type': 'text/plain'});
 			res.write('BAD');
 			res.end();
@@ -225,7 +272,6 @@ function signup(req, res) {
 	});
 	req.on('end', function() {
 		const registration = JSON.parse(body);
-		console.log(registration);
 		MongoClient.connect(mongodbUrl, function(err, db) {
 			if (err) throw err;
 			const dbo = db.db('database');
@@ -233,7 +279,6 @@ function signup(req, res) {
 				function(err, result) {
 					if (err) throw err;
 					if (result) {
-						console.log('User already exists');
 						res.writeHead(400, {'Content-Type': 'text/plain'});
 						res.end('User alredy exists!');
 						db.close();
@@ -241,7 +286,6 @@ function signup(req, res) {
 					else {
 						dbo.collection('users').insertOne(registration, function(err, result) {
 							if (err) throw err;
-							console.log('Accout created');
 							let token = jwt.sign({login: registration.login}, secret);
 							res.setHeader('Content-Type', 'application/json');
 							res.end(token);
@@ -272,11 +316,9 @@ function signin(req, res) {
 						const token = jwt.sign({login: result.login}, secret);
 						res.setHeader('Content-Type', 'application/json');
 						res.end(token);
-						console.log(token);
 						db.close();
 					}
 					else {
-						console.log('Invalid pass || login');
 						res.writeHead(400, {'Content-Type': 'text/plain'});
 						res.write('Invalid login or password!\n');
 						res.end();
@@ -306,13 +348,11 @@ function contacts(req, res) {
 	});
 	busboy.on('finish', function() {
 		if (success) {
-			console.log('NICE');
 			MongoClient.connect(mongodbUrl, (err, db) => {
 				if (err) throw err;
 				let dbo = db.db('database');
 				dbo.collection('contacts').insertOne(record, (err, result) => {
 					if (err) throw err;
-					console.log('Record inserted');
 					db.close();
 				});
 			});
@@ -320,7 +360,6 @@ function contacts(req, res) {
 			res.write('Nice');
 			res.end();
 		} else {
-			console.log('BAD');
 			res.writeHead(400, {'Content-Type': 'text/plain'});
 			res.write('BAD');
 			res.end();
