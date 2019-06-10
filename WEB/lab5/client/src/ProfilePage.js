@@ -4,6 +4,17 @@ import { Header, LeftSideMenu, Footer } from './Statics';
 import decode from 'jwt-decode';
 import Post from './Post';
 
+function date() {
+	const currentDate = new Date();
+	const date = currentDate.getDate();
+	const month = currentDate.getMonth();
+	const year = currentDate.getFullYear();
+	const hours = currentDate.getHours();
+	const mins = currentDate.getMinutes();
+	const dateString = date + '.' + (month + 1) + '.' + year + '  ' + hours + ':' + mins;
+	return dateString;
+}
+
 class ProfilePage extends Component {
 	constructor(props) {
 		super(props);
@@ -39,13 +50,10 @@ class ProfilePage extends Component {
 			body: data,
 		}).then((res) => {
 			if (res.ok) {
-				let newdata = {};
-				const olddata = this.state.data;
-				for (let elem of data)
-					newdata[elem[0]] = elem[1];
-				newdata.filePath = newdata.filePath.name;
-				this.setState({ data: olddata.concat(newdata)});
-				console.log(this.state.data);
+				fetch(`/profileposts?login=${this.state.currentUser}`)
+				.then(res => res.json())
+				.then((data) => this.setState({ data: data }))
+				.catch((err) => console.log(err));
 			}
 			else {
 				alert('Post has not been added');
@@ -59,6 +67,7 @@ class ProfilePage extends Component {
 				text={post.message}
 				file={post.filePath}
 				time={post.time}
+				id={post._id}
 			/>
 		)
 	}

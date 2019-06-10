@@ -23,8 +23,9 @@ class ContactsPage extends Component {
 			.then((res) => res.blob())
 			.then((img) => {
 				const objUrl = URL.createObjectURL(img);
-				const imgTag = document.getElementById(record.filePath);
-				imgTag.src = objUrl;
+				const imgTag = document.getElementsByClassName(record.filePath);
+				for (let e of imgTag)
+					e.src = objUrl;
 			});
 		return (
 			<div>
@@ -33,7 +34,7 @@ class ContactsPage extends Component {
 				<p>Type: {record.app_type}</p>
 				<p>Text: {record.message}</p>
 				<br/>
-				<img src={null} alt={record.filePath} id={record.filePath} width='300px' />
+				<img src={null} alt={record.filePath} className={record.filePath} width='300px' />
 				<hr/><br/>
 			</div>
 		);

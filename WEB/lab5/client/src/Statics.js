@@ -45,9 +45,9 @@ const LeftSideMenu = () => (
 	<aside className='flex-item sidebar'>
 		<ul className='nav'>
 			<li><Link to='/profile'>Profile</Link></li>
-			<li><Link to='/menu'>Menu</Link></li>
+			<li><Link to='/index'>Menu</Link></li>
 			<li><Link to='/music'>Music</Link></li>
-			<li><Link to='/video'>Video</Link></li>
+			<li><Link to='/groups'>Groups</Link></li>
 			<li><Link to='/contacts'>Contacts</Link></li>
 		</ul>
 	</aside>

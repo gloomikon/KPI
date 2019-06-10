@@ -1,5 +1,4 @@
 import React from "react";
-import './Post.css';
 
 const	imgTypes	=	["png", "jpg", "jpeg"];
 const	videoTypes	=	["mp4", "wemb"];
@@ -18,6 +17,7 @@ class Post extends React.Component {
 			text: props.text, 
 			file: props.file,
 			time: props.time,
+			id:	props.id,
 			deleted: false, 
 			edited: false
 		}
@@ -27,11 +27,16 @@ class Post extends React.Component {
 		this.handleDelete = this.handleDelete.bind(this);
 	}
 	handleSubmit(event) {
+		event.preventDefault();
 		if (this.state.file !== "" || this.state.text !== "") { 
 			this.setState(prev => prev.edited=false);
+			fetch('/updatePost', {
+				method: 'POST',
+				body: JSON.stringify({ text: this.state.text, id: this.state.id })
+			})
+			.then((res) => res.ok? alert('Post updated'): alert('Error'));
 		}
 		else {
-			event.preventDefault(); 
 			alert('Not all fields are filled!');
 		}
 	}
@@ -43,6 +48,12 @@ class Post extends React.Component {
 		this.setState({[name]: value})
 	}
 	handleDelete() {
+		this.setState({ deleted: true });
+		fetch('/deletePost', {
+			method: 'POST',
+			body: JSON.stringify({ id: this.state.id })
+		})
+		.then((res) => res.ok? alert('Post deleted'): alert('Error'));
 	}
 
 	render() {

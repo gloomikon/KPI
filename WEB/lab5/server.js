@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 const mongodbUrl = 'mongodb://localhost:27017/database';
 const http = require('http');
 const Busboy = require('busboy');
@@ -12,6 +13,17 @@ const secret = 'first thought — best thought';
 const hostname = '0.0.0.0';
 const port = 8080;
 
+function date() {
+	const currentDate = new Date();
+	const date = currentDate.getDate();
+	const month = currentDate.getMonth();
+	const year = currentDate.getFullYear();
+	const hours = currentDate.getHours();
+	const mins = currentDate.getMinutes();
+	const dateString = date + '.' + (month + 1) + '.' + year + '  ' + hours + ':' + mins;
+	return dateString;
+}
+
 const funcList = {
 	'/contacts'		:	contacts,
 	'/admin'		:	admin,
@@ -20,6 +32,10 @@ const funcList = {
 	'/profilename'	:	profilename,
 	'/profileposts'	:	profileposts,
 	'/addpost'		:	addpost,
+	'/deletePost'	:	deletePost,
+	'/updatePost'	:	updatePost,
+	'/getgroups'	:	getgroups,
+	'/creategroup'	:	creategroup,
 	'default'		:	defaultf,
 };
 
@@ -37,6 +53,97 @@ const types = {
 	"mp4"	:	"video/mp4",
 	"webm"	:	"video/wemb",	
 };
+
+function creategroup(req, res) {
+	let body = '';
+	req.on('data', function(data) {
+		body += data;
+		if (body.length > 1000000)
+			req.connection.destroy();
+	});
+	req.on('end', function() {
+		const {admin, group}  = JSON.parse(body);
+		MongoClient.connect(mongodbUrl, function(err, db) {
+			if (err) throw err;
+			const dbo = db.db('database');
+			dbo.collection('groups').findOne({ 'name' : group }, function(err, result) {
+				if (err) throw err;
+				if (result) {
+					res.writeHead(400, {'Content-Type': 'text/plain'});
+					res.end('Group alredy exists!');
+					db.close();
+				}
+				else {
+					dbo.collection('groups').insertOne({ 'admin' : admin, 'name' : group, 'users':[admin]},
+					function(err, result) {
+						if (err) throw err;
+						else console.log('Group created');
+						res.writeHead(200, {'Content-Type': 'text/plain'});
+						res.end('User alredy exists!');
+						db.close();
+					});
+				}
+			})
+		});
+	});
+}
+
+function getgroups(req, res) {
+	let login = querystring.parse(url.parse(req.url).query).login;
+	MongoClient.connect(mongodbUrl, function(err, db) {
+		if (err) throw err;
+		const dbo = db.db('database');
+		dbo.collection('groups').find({'users': login}).toArray((err, result) => {
+			if (err) throw err;
+			res.setHeader('Content-Type', 'application/json');
+			res.end(JSON.stringify(result));
+			db.close();
+		});
+	});
+}
+
+function deletePost(req, res) {
+	let body = '';
+	req.on('data', function(data) {
+		body += data;
+		if (body.length > 1000000)
+			req.connection.destroy();
+	});
+	req.on('end', function() {
+		const rem = JSON.parse(body);
+		MongoClient.connect(mongodbUrl, function(err, db) {
+			if (err) throw err;
+			const dbo = db.db('database');
+			console.log(`id=${rem.id}`);
+			dbo.collection('posts').remove({ '_id': ObjectID(rem.id)})
+		});
+		res.writeHead(200, {'Content-Type': 'text/plain'});
+		res.end('User alredy exists!');
+	});	
+}
+
+function updatePost(req, res) {
+	let body = '';
+	req.on('data', function(data) {
+		body += data;
+		if (body.length > 1000000)
+			req.connection.destroy();
+	});
+	req.on('end', function() {
+		const upd = JSON.parse(body);
+		MongoClient.connect(mongodbUrl, function(err, db) {
+			if (err) throw err;
+			const dbo = db.db('database');
+			console.log(`id=${upd.id}`);
+			dbo.collection('posts').updateOne({ '_id': ObjectID(upd.id)}, 
+				{ $set: { 'message' : upd.text } }, function(err, result) {
+					if (err) throw err
+					else console.log(result);
+			})})
+		res.writeHead(200, {'Content-Type': 'text/plain'});
+		res.end('User alredy exists!');
+	});
+}
 
 function addpost(req, res) {
 	let textFlag = false, fileFlag = false, record = {}, busboy = new Busboy({headers : req.headers});
@@ -56,7 +163,7 @@ function addpost(req, res) {
 		textFlag = (val != "" && fieldname != 'login') ? true : textFlag;
 	});
 	busboy.on('finish', function() {
-		record['time'] = (new Date()).toString();
+		record['time'] = date();
 		if (textFlag || fileFlag) {
 			MongoClient.connect(mongodbUrl, function(err, db) {
 				if (err) throw err;
