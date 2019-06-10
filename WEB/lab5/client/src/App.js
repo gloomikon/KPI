@@ -19,6 +19,7 @@ class App extends Component {
 					<Switch>
 						<Redirect exact from='/' to='/index' />
 						<Route path='/profile' component={ProfilePage} />
+						<Route path='/group/signin' component={SigninPage} />
 						<Route path='/contacts' component={ContactsPage} />
 						<Route path='/admin' component={AdminPage} />
 						<Route path='/signin' component={SigninPage} />

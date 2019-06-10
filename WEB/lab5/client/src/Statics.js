@@ -46,8 +46,8 @@ const LeftSideMenu = () => (
 		<ul className='nav'>
 			<li><Link to='/profile'>Profile</Link></li>
 			<li><Link to='/index'>Menu</Link></li>
-			<li><Link to='/music'>Music</Link></li>
 			<li><Link to='/groups'>Groups</Link></li>
+			<li><Link to='/admin'>Admin</Link></li>
 			<li><Link to='/contacts'>Contacts</Link></li>
 		</ul>
 	</aside>

@@ -11,7 +11,7 @@ class GroupsPage extends Component {
 			isLoggedIn: token ? true: false,
 			currentUser: token ? decode(token).login : '',
 			data: null,
-			group: 'New Group',
+			group: '',
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -65,19 +65,32 @@ class GroupsPage extends Component {
 					<Header isLoggedIn={this.state.isLoggedIn} />
 				</li>
 				<LeftSideMenu />
-					<li className='flex-item main'>
-						<h1>Add new group: </h1><hr/>
-						<form id='group' onSubmit={this.handleSubmit}>
-							Name:
-							<textarea
-								name='group'
-								value={this.state.group}
-								onChange={this.handleChange}
-							/><br/>
-							<input type='submit' value='SEND' />
-						</form><hr/><br/>
-						{groups}
-					</li>
+				{
+					this.state.currentUser ? (
+						<li className='flex-item main' style={{height:'650px'}}>
+							<h1>Add new group: </h1><hr/>
+							<form id='group' onSubmit={this.handleSubmit}>
+								Name:
+								<textarea
+									name='group'
+									value={this.state.group}
+									onChange={this.handleChange}
+								/><br/>
+								<input type='submit' value='SEND' />
+							</form><hr/><br/>
+							{groups}
+						</li>
+					) : (
+						<li className='flex-item main'>
+						<section className='flex-item main_header'>
+							<h1>You are not logged in!</h1>
+						</section>
+						<article className='flext-item content'>
+							<h1><br/><br/><br/><br/>Please, log in to see your groups!!!!<br/><br/><br/><br/><br/><br/><br/><br/></h1>
+						</article>
+						</li>
+					)
+				}
 				<Footer />
 			</ul>
 		)

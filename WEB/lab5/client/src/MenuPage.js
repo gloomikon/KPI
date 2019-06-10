@@ -16,8 +16,9 @@ class MenuPage extends Component {
 					<Header isLoggedIn={this.state.isLoggedIn} />
 				</li>
 				<LeftSideMenu />
-					<li className='flex-item main'>
-						Menu
+					<li className='flex-item main' style={{height:'650px'}}>
+						<p>Under construction</p><br/>
+						<p>Nothing to do here</p>
 					</li>
 				<Footer />
 			</ul>

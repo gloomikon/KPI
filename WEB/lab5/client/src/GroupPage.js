@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header, LeftSideMenu, Footer } from './Statics';
 import decode from 'jwt-decode';
-import Post from './Post';
+import Post from './GrPost';
 
 class GroupPage extends Component {
 	constructor(props) {
@@ -18,6 +18,31 @@ class GroupPage extends Component {
 		this.handleAdd = this.handleAdd.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleSubmit(event) {
+		event.preventDefault();
+		const id = this.props.match.params.id;
+		const data = new FormData(document.getElementById('grpost'));
+		data.append('login', this.state.currentUser);
+		data.append('groupid', this.props.match.params.id);
+		document.getElementById('grpost').reset();
+		fetch('/addgrpost', {
+			method: 'POST',
+			body: data,
+		}).then((res) => {
+			if (res.ok) {
+				fetch(`/getgrposts?group=${id}`)
+				.then(res => res.json())
+				.then((data) => this.setState({ posts: data }))
+				.catch((err) => console.log(err));
+				alert('Post has been added');
+			}
+			else {
+				alert('Post has not been added');
+			}
+		}).catch((err) => console.log(err));
 	}
 
 	handleAdd(event) {
@@ -28,6 +53,10 @@ class GroupPage extends Component {
 		.then((res) => {
 			if (res.ok) {
 				alert('User added');
+				fetch(`/getgroupinfo?group=${id}`)
+				.then(res => res.json())
+				.then((data) => {this.setState({data: data});})
+				.catch(err => console.log(err));
 			}
 			else {
 				alert('Error occured');
@@ -63,15 +92,15 @@ class GroupPage extends Component {
 			.then((data) => {this.setState({data: data, admin: data.users[0]});})
 			.catch(err => console.log(err));
 
-		// fetch(`/getgroups?group=${id}`)
-		// 	.then(res => res.json())
-		// 	.then((data) => this.setState({ posts: data }))
-		// 	.catch((err) => console.log(err));
+		fetch(`/getgrposts?group=${id}`)
+			.then(res => res.json())
+			.then((data) => this.setState({ posts: data }))
+			.catch((err) => console.log(err));
 	}
 
 	renderOneUser(elem) {
 		return (
-			<p>{elem}&nbsp;;</p>
+			<p>{elem}&nbsp;</p>
 		)
 	}
 
@@ -81,6 +110,7 @@ class GroupPage extends Component {
 				text={post.message}
 				file={post.filePath}
 				time={post.time}
+				login={post.login}
 				id={post._id}
 			/>
 		)
@@ -88,12 +118,17 @@ class GroupPage extends Component {
 
 	render() {
 		let name = '';
-		let potsts = [];
+		let posts = [];
 		let users = [];
 		if (this.state.data != null) {
 			name = this.state.data.name;
 			for (let user of this.state.data.users)
 				users.push(this.renderOneUser(user))
+		}
+		if (this.state.posts != null && this.state.posts.length > 0) {
+			for (let elem of this.state.posts) {
+				posts.push(this.renderOnePost(elem));
+			}
 		}
 		return (
 			<ul className='flex-container'>
@@ -108,19 +143,34 @@ class GroupPage extends Component {
 						{
 							(this.state.currentUser === this.state.admin) ? (
 								<div>
-									You are an admin. You can add or delete users
-									<form id='user' >
-										<textarea
-											name="user"
-											value={this.state.user}
-											onChange={this.handleChange}
-										/><br/>
-										<button onClick={this.handleAdd}>Add</button>
-										<button onClick={this.handleDelete}>Delete</button>
-									</form>
+									<section className='flex-item main_header'>
+										<h6>You are an admin. You can add or delete users</h6>
+										<form id='user' >
+											<textarea
+												name="user"
+												value={this.state.user}
+												onChange={this.handleChange}
+											/><br/>
+											<button onClick={this.handleAdd}>Add</button>
+											<button onClick={this.handleDelete}>Delete</button>
+										</form>
+									</section>
 								</div>
 							) : (<div></div>)
 						}
+						<hr/>
+						<article className='flext-item content'>
+							<h5>Create new post</h5>
+							<form id='grpost' onSubmit={this.handleSubmit} encType="multipart/form-data">
+								<p>Your message:</p><br/>
+								<textarea name='message' /><br/>
+								<p>Attach file:</p>
+								<input type='file' name='filePath' /><br/>
+								<input type='submit' value='SEND' />
+							</form>
+							<hr/>
+							{posts}
+						</article>
 					</li>
 				<Footer />
 			</ul>

@@ -55,7 +55,33 @@ class Post extends React.Component {
 		})
 		.then((res) => res.ok? alert('Post deleted'): alert('Error'));
 	}
-
+	renderFile(extension) {
+		if (extension === 'img')
+			return (
+				<img src = {require(`./files/${this.state.file}`)} alt="post" width='200px'/>
+			)
+		else if (extension === 'video')
+				return (
+					<video width="320" height="240" controls preload="auto" >
+						<source src={require(`./files/${this.state.file}`)} type="video/webm" />
+						<p>Your browser does not support the video tag.</p>
+					</video>
+				)
+		else if (extension === 'music')
+				return (
+					<audio controls>
+						<source src = {require(`./files/${this.state.file}`)} type = "audio/mp3" />
+						<p>Your browser doesn't support the audio tag.</p>
+					</audio>
+				)
+		else if (extension === 'file')
+				return (
+					<p>Attachment: {this.state.file}</p>
+				)
+		else return (
+			<div/>
+		)
+	}
 	render() {
 		let extension = (this.state.file) ? getType(this.state.file.split('.').pop()) : null;
 		return (
@@ -73,9 +99,7 @@ class Post extends React.Component {
 						<br/>
 						<p>{this.state.time}</p>
 						<p>{this.state.text}</p>
-						{
-							(extension === 'img') ? <img src = {require(`./files/${this.state.file}`)} alt="post" width='200px'/> : <div/>
-						}
+						{ this.renderFile(extension) }
 						<div>
 							<button onClick={this.handleClick}>Change</button> 
 							<button onClick={this.handleDelete}>Delete</button>

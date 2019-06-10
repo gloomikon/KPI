@@ -39,6 +39,10 @@ const funcList = {
 	'/getgroupinfo'		:	getgroupinfo,
 	'/addusertogroup'	:	addusertogroup,
 	'/deluserfromgroup'	:	deluserfromgroup,
+	'/addgrpost'		:	addgrpost,
+	'/getgrposts'		:	getgrposts,
+	'/deletegrPost'		:	deletegrPost,
+	'/updategrPost'		:	updategrPost,
 	'default'			:	defaultf,
 };
 
@@ -56,6 +60,60 @@ const types = {
 	"mp4"	:	"video/mp4",
 	"webm"	:	"video/wemb",	
 };
+
+function getgrposts(req, res) {
+	let group = querystring.parse(url.parse(req.url).query).group;
+	MongoClient.connect(mongodbUrl, function(err, db) {
+		if (err) throw err;
+		const dbo = db.db('database');
+		dbo.collection('groupsposts').find({'groupid': group}).toArray((err, result) => {
+			if (err) throw err;
+			res.setHeader('Content-Type', 'application/json');
+			res.end(JSON.stringify(result));
+			db.close();
+		});
+	});
+}
+
+function addgrpost(req, res) {
+	let textFlag = false, fileFlag = false, record = {}, busboy = new Busboy({headers : req.headers});
+	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+		if (filename) {
+			let filePath = path.join('./client/src/files/', path.basename(filename));
+			record['filePath'] = path.basename(filename);
+			file.pipe(fs.createWriteStream(filePath));
+			fileFlag = true;
+		}
+		else {
+			file.resume();
+		}
+	});
+	busboy.on('field', function(fieldname, val, fieldnameTruncated, encoding, mimetype) {
+		record[fieldname] = val;
+		textFlag = (val != "" && fieldname != 'login' && fieldname != 'groupid') ? true : textFlag;
+	});
+	busboy.on('finish', function() {
+		record['time'] = date();
+		if (textFlag || fileFlag) {
+			MongoClient.connect(mongodbUrl, function(err, db) {
+				if (err) throw err;
+				const dbo = db.db('database');
+				dbo.collection('groupsposts').insertOne(record, (err, result) => {
+					if (err) throw err;
+					db.close();
+				});
+			});
+			res.writeHead(200, {'Content-Type': 'text/plain'});
+			res.write('Nice');
+			res.end();
+		} else {
+			res.writeHead(400, {'Content-Type': 'text/plain'});
+			res.write('BAD');
+			res.end();
+		}
+	});
+	req.pipe(busboy);
+}
 
 function deluserfromgroup(req, res) {
 	let { group, user } = querystring.parse(url.parse(req.url).query);
@@ -213,6 +271,25 @@ function deletePost(req, res) {
 	});	
 }
 
+function deletegrPost(req, res) {
+	let body = '';
+	req.on('data', function(data) {
+		body += data;
+		if (body.length > 1000000)
+			req.connection.destroy();
+	});
+	req.on('end', function() {
+		const rem = JSON.parse(body);
+		MongoClient.connect(mongodbUrl, function(err, db) {
+			if (err) throw err;
+			const dbo = db.db('database');
+			dbo.collection('groupsposts').remove({ '_id': ObjectID(rem.id)})
+		});
+		res.writeHead(200, {'Content-Type': 'text/plain'});
+		res.end('User alredy exists!');
+	});	
+}
+
 function updatePost(req, res) {
 	let body = '';
 	req.on('data', function(data) {
@@ -226,6 +303,27 @@ function updatePost(req, res) {
 			if (err) throw err;
 			const dbo = db.db('database');
 			dbo.collection('posts').updateOne({ '_id': ObjectID(upd.id)}, 
+				{ $set: { 'message' : upd.text } }, function(err, result) {
+					if (err) throw err
+			})})
+		res.writeHead(200, {'Content-Type': 'text/plain'});
+		res.end('User alredy exists!');
+	});
+}
+
+function updategrPost(req, res) {
+	let body = '';
+	req.on('data', function(data) {
+		body += data;
+		if (body.length > 1000000)
+			req.connection.destroy();
+	});
+	req.on('end', function() {
+		const upd = JSON.parse(body);
+		MongoClient.connect(mongodbUrl, function(err, db) {
+			if (err) throw err;
+			const dbo = db.db('database');
+			dbo.collection('groupsposts').updateOne({ '_id': ObjectID(upd.id)}, 
 				{ $set: { 'message' : upd.text } }, function(err, result) {
 					if (err) throw err
 			})})
