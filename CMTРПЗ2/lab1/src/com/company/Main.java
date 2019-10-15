@@ -5,8 +5,8 @@ import com.company.sql.CustomerSQL;
 
 public class Main {
 	public static void main(String[] args) {
-		CustomerSQL customerSQL = new CustomerSQL();
-
-
+		//Facade.createCustomers();
+		//Facade.createPlanes();
+		Facade.createTickets();
 	}
 }

@@ -6,13 +6,6 @@ public class Customer {
 	private String surname;
 	private String passport;
 
-	public Customer(int id, String name, String surname, String passport) {
-		this.id = id;
-		this.name = name;
-		this.surname = surname;
-		this.passport = passport;
-	}
-
 	public Customer() {
 	}
 

@@ -1,15 +1,14 @@
 package com.company.sql;
 
-import com.company.dao.CustomerDAO;
-import com.company.entities.Customer;
+import com.company.dao.TicketDAO;
+import com.company.entities.Ticket;
 
 import java.sql.*;
 
-public class CustomerSQL implements CustomerDAO {
-
+public class TicketSQL implements TicketDAO {
 	private Connection connection;
 
-	public CustomerSQL() {
+	public TicketSQL() {
 		String DB_DRIVER = "com.mysql.jdbc.Driver";
 		String DB_URL = "jdbc:mysql://localhost:3306/lab1";
 		String DB_USERNAME = "root";
@@ -30,11 +29,17 @@ public class CustomerSQL implements CustomerDAO {
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = connection.prepareStatement(
-					"create table customers(" +
-					"id int PRIMARY KEY AUTO_INCREMENT," +
-					"name text NOT NULL," +
-					"surname text NOT NULL," +
-					"passport text NOT NULL)");
+					"create table tickets(" +
+							"id int PRIMARY KEY AUTO_INCREMENT," +
+							"customer_id int NOT NULL," +
+							"plane_id int NOT NULL," +
+							"place text NOT NULL," +
+							"foreign key (customer_id)" +
+							"references customers(id)" +
+							"on update cascade on delete cascade," +
+							"foreign key (plane_id)" +
+							"references planes(id)" +
+							"on update cascade on delete cascade )");
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -42,14 +47,14 @@ public class CustomerSQL implements CustomerDAO {
 	}
 
 	@Override
-	public void addRow(Customer customer) {
+	public void addRow(Ticket ticket) {
 		PreparedStatement preparedStatement;
-		String sql = "insert into customers (name, surname, passport) values(?,?,?)";
+		String sql = "insert into tickets (customer_id, plane_id, place) values(?,?,?)";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, customer.getName());
-			preparedStatement.setString(2, customer.getSurname());
-			preparedStatement.setString(3, customer.getPassport());
+			preparedStatement.setInt(1, ticket.getCustomer_id());
+			preparedStatement.setInt(2, ticket.getPlane_id());
+			preparedStatement.setString(3, ticket.getPlace());
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,36 +62,36 @@ public class CustomerSQL implements CustomerDAO {
 	}
 
 	@Override
-	public Customer readRow(int id) {
+	public Ticket readRow(int id) {
 		PreparedStatement preparedStatement;
-		Customer customer = new Customer();
-		String sql = "select * from customers where id=?";
+		Ticket ticket = new Ticket();
+		String sql = "select * from tickets where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				customer.setId(resultSet.getInt("id"));
-				customer.setName(resultSet.getString("name"));
-				customer.setSurname(resultSet.getString("surname"));
-				customer.setPassport(resultSet.getString("passport"));
+				ticket.setId(resultSet.getInt("id"));
+				ticket.setCustomer_id(resultSet.getInt("customer_id"));
+				ticket.setPlane_id(resultSet.getInt("plane_id"));
+				ticket.setPlace(resultSet.getString("place"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return customer;
+		return ticket;
 	}
 
 	@Override
-	public void updateRow(Customer customer) {
+	public void updateRow(Ticket ticket) {
 		PreparedStatement preparedStatement;
-		String sql = "update customers set name=?, surname=?, passport=? where id=?";
+		String sql = "update tickets set customer_id=?, plane_id=?, place=? where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, customer.getName());
-			preparedStatement.setString(2, customer.getSurname());
-			preparedStatement.setString(3, customer.getPassport());
-			preparedStatement.setInt(4, customer.getId());
+			preparedStatement.setInt(1, ticket.getCustomer_id());
+			preparedStatement.setInt(2, ticket.getPlane_id());
+			preparedStatement.setString(3, ticket.getPlace());
+			preparedStatement.setInt(4, ticket.getId());
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,7 +101,7 @@ public class CustomerSQL implements CustomerDAO {
 	@Override
 	public void deleteRow(int id) {
 		PreparedStatement preparedStatement;
-		String sql = "delete from customers where id=?";
+		String sql = "delete from tickets where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);

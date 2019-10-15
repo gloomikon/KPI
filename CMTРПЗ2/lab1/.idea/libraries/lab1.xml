@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lab1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mongodb-driver-core-3.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bson-3.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mongodb-driver-sync-3.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-5.1.18.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

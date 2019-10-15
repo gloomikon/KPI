@@ -25,4 +25,13 @@ public class Plane {
 	public int getCapacity() { return capacity; }
 
 	public void setCapacity(int capacity) { this.capacity = capacity; }
+
+	@Override
+	public String toString() {
+		return "Plane{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", capacity=" + capacity +
+				'}';
+	}
 }

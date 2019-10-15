@@ -11,5 +11,9 @@
     <orderEntry type="library" name="mongodb-driver-core-3.11.0" level="project" />
     <orderEntry type="library" name="mongodb-driver-sync-3.11.0" level="project" />
     <orderEntry type="library" name="mysql-connector-5.1.18" level="project" />
+    <orderEntry type="library" name="bson-3.11.0" level="project" />
+    <orderEntry type="library" name="mongodb-driver-core-3.11.0" level="project" />
+    <orderEntry type="library" name="mongodb-driver-sync-3.11.0" level="project" />
+    <orderEntry type="library" name="mysql-connector-5.1.18" level="project" />
   </component>
 </module>

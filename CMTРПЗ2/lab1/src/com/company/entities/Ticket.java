@@ -31,4 +31,14 @@ public class Ticket {
 	public String getPlace() { return place; }
 
 	public void setPlace(String place) { this.place = place;  }
+
+	@Override
+	public String toString() {
+		return "Ticket{" +
+				"id=" + id +
+				", customer_id=" + customer_id +
+				", plane_id=" + plane_id +
+				", place='" + place + '\'' +
+				'}';
+	}
 }

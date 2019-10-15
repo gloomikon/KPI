@@ -1,15 +1,14 @@
 package com.company.sql;
 
-import com.company.dao.CustomerDAO;
-import com.company.entities.Customer;
+import com.company.dao.PlaneDAO;
+import com.company.entities.Plane;
 
 import java.sql.*;
 
-public class CustomerSQL implements CustomerDAO {
-
+public class PlaneSQL implements PlaneDAO {
 	private Connection connection;
 
-	public CustomerSQL() {
+	public PlaneSQL() {
 		String DB_DRIVER = "com.mysql.jdbc.Driver";
 		String DB_URL = "jdbc:mysql://localhost:3306/lab1";
 		String DB_USERNAME = "root";
@@ -30,11 +29,10 @@ public class CustomerSQL implements CustomerDAO {
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = connection.prepareStatement(
-					"create table customers(" +
-					"id int PRIMARY KEY AUTO_INCREMENT," +
-					"name text NOT NULL," +
-					"surname text NOT NULL," +
-					"passport text NOT NULL)");
+					"create table planes(" +
+							"id int PRIMARY KEY AUTO_INCREMENT," +
+							"name text NOT NULL," +
+							"capacity int NOT NULL)");
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -42,14 +40,13 @@ public class CustomerSQL implements CustomerDAO {
 	}
 
 	@Override
-	public void addRow(Customer customer) {
+	public void addRow(Plane plane) {
 		PreparedStatement preparedStatement;
-		String sql = "insert into customers (name, surname, passport) values(?,?,?)";
+		String sql = "insert into planes (name, capacity) values(?,?)";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, customer.getName());
-			preparedStatement.setString(2, customer.getSurname());
-			preparedStatement.setString(3, customer.getPassport());
+			preparedStatement.setString(1, plane.getName());
+			preparedStatement.setInt(2, plane.getCapacity());
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,36 +54,34 @@ public class CustomerSQL implements CustomerDAO {
 	}
 
 	@Override
-	public Customer readRow(int id) {
+	public Plane readRow(int id) {
 		PreparedStatement preparedStatement;
-		Customer customer = new Customer();
-		String sql = "select * from customers where id=?";
+		Plane plane = new Plane();
+		String sql = "select * from planes where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				customer.setId(resultSet.getInt("id"));
-				customer.setName(resultSet.getString("name"));
-				customer.setSurname(resultSet.getString("surname"));
-				customer.setPassport(resultSet.getString("passport"));
+				plane.setId(resultSet.getInt("id"));
+				plane.setName(resultSet.getString("name"));
+				plane.setCapacity(resultSet.getInt("capacity"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return customer;
+		return plane;
 	}
 
 	@Override
-	public void updateRow(Customer customer) {
+	public void updateRow(Plane plane) {
 		PreparedStatement preparedStatement;
-		String sql = "update customers set name=?, surname=?, passport=? where id=?";
+		String sql = "update planes set name=?, capacity=? where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, customer.getName());
-			preparedStatement.setString(2, customer.getSurname());
-			preparedStatement.setString(3, customer.getPassport());
-			preparedStatement.setInt(4, customer.getId());
+			preparedStatement.setString(1, plane.getName());
+			preparedStatement.setInt(2, plane.getCapacity());
+			preparedStatement.setInt(3, plane.getId());
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,7 +91,7 @@ public class CustomerSQL implements CustomerDAO {
 	@Override
 	public void deleteRow(int id) {
 		PreparedStatement preparedStatement;
-		String sql = "delete from customers where id=?";
+		String sql = "delete from planes where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
