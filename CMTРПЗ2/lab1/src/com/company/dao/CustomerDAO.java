@@ -11,11 +11,14 @@ public interface CustomerDAO {
 	void addRow(Customer customer);
 
 	// Get info about Customer by ID
-	Customer readRow(int id);
+	Customer readRow(String id);
 
 	// Update info about Customer
 	void updateRow(Customer customer);
 
 	// Delete Customer by ID
-	void deleteRow(int id);
+	void deleteRow(String id);
+
+	// Delete table
+	void dropTable();
 }

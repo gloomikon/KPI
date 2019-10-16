@@ -57,16 +57,16 @@ public class CustomerSQL implements CustomerDAO {
 	}
 
 	@Override
-	public Customer readRow(int id) {
+	public Customer readRow(String id) {
 		PreparedStatement preparedStatement;
 		Customer customer = new Customer();
 		String sql = "select * from customers where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, Integer.valueOf(id));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				customer.setId(resultSet.getInt("id"));
+				customer.setId(Integer.toString(resultSet.getInt("id")));
 				customer.setName(resultSet.getString("name"));
 				customer.setSurname(resultSet.getString("surname"));
 				customer.setPassport(resultSet.getString("passport"));
@@ -86,7 +86,7 @@ public class CustomerSQL implements CustomerDAO {
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getSurname());
 			preparedStatement.setString(3, customer.getPassport());
-			preparedStatement.setInt(4, customer.getId());
+			preparedStatement.setInt(4, Integer.valueOf(customer.getId()));
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,12 +94,23 @@ public class CustomerSQL implements CustomerDAO {
 	}
 
 	@Override
-	public void deleteRow(int id) {
+	public void deleteRow(String id) {
 		PreparedStatement preparedStatement;
 		String sql = "delete from customers where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, Integer.valueOf(id));
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void dropTable() {
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("drop table customers");
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

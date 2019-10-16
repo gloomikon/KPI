@@ -1,12 +1,15 @@
 package com.company;
 
-import com.company.entities.Customer;
-import com.company.sql.CustomerSQL;
-
 public class Main {
 	public static void main(String[] args) {
-		//Facade.createCustomers();
-		//Facade.createPlanes();
-		Facade.createTickets();
+		FacadeSQL.dropAllTables();
+		FacadeSQL.createCustomers();
+		FacadeSQL.createPlanes();
+		FacadeSQL.createTickets();
+
+		FacadeMongo.dropAllTables();
+		FacadeMongo.createCustomers();
+		FacadeMongo.createPlanes();
+		FacadeMongo.createTickets();
 	}
 }

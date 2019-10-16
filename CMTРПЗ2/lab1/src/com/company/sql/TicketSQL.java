@@ -34,10 +34,10 @@ public class TicketSQL implements TicketDAO {
 							"customer_id int NOT NULL," +
 							"plane_id int NOT NULL," +
 							"place text NOT NULL," +
-							"foreign key (customer_id)" +
+							"constraint foreign key (customer_id)" +
 							"references customers(id)" +
 							"on update cascade on delete cascade," +
-							"foreign key (plane_id)" +
+							"constraint foreign key (plane_id)" +
 							"references planes(id)" +
 							"on update cascade on delete cascade )");
 			preparedStatement.execute();
@@ -52,8 +52,8 @@ public class TicketSQL implements TicketDAO {
 		String sql = "insert into tickets (customer_id, plane_id, place) values(?,?,?)";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, ticket.getCustomer_id());
-			preparedStatement.setInt(2, ticket.getPlane_id());
+			preparedStatement.setInt(1, Integer.valueOf(ticket.getCustomer_id()));
+			preparedStatement.setInt(2, Integer.valueOf(ticket.getPlane_id()));
 			preparedStatement.setString(3, ticket.getPlace());
 			preparedStatement.execute();
 		} catch (SQLException e) {
@@ -62,18 +62,18 @@ public class TicketSQL implements TicketDAO {
 	}
 
 	@Override
-	public Ticket readRow(int id) {
+	public Ticket readRow(String id) {
 		PreparedStatement preparedStatement;
 		Ticket ticket = new Ticket();
 		String sql = "select * from tickets where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, Integer.valueOf(id));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				ticket.setId(resultSet.getInt("id"));
-				ticket.setCustomer_id(resultSet.getInt("customer_id"));
-				ticket.setPlane_id(resultSet.getInt("plane_id"));
+				ticket.setId(Integer.toString(resultSet.getInt("id")));
+				ticket.setCustomer_id(Integer.toString(resultSet.getInt("customer_id")));
+				ticket.setPlane_id(Integer.toString(resultSet.getInt("plane_id")));
 				ticket.setPlace(resultSet.getString("place"));
 			}
 		} catch (SQLException e) {
@@ -88,10 +88,10 @@ public class TicketSQL implements TicketDAO {
 		String sql = "update tickets set customer_id=?, plane_id=?, place=? where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, ticket.getCustomer_id());
-			preparedStatement.setInt(2, ticket.getPlane_id());
+			preparedStatement.setInt(1, Integer.valueOf(ticket.getCustomer_id()));
+			preparedStatement.setInt(2, Integer.valueOf(ticket.getPlane_id()));
 			preparedStatement.setString(3, ticket.getPlace());
-			preparedStatement.setInt(4, ticket.getId());
+			preparedStatement.setInt(4, Integer.valueOf(ticket.getId()));
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,12 +99,23 @@ public class TicketSQL implements TicketDAO {
 	}
 
 	@Override
-	public void deleteRow(int id) {
+	public void deleteRow(String id) {
 		PreparedStatement preparedStatement;
 		String sql = "delete from tickets where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, Integer.valueOf(id));
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void dropTable() {
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("drop table tickets");
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

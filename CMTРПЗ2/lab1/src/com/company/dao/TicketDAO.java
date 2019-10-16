@@ -11,11 +11,14 @@ public interface TicketDAO {
 	void addRow(Ticket ticket);
 
 	// Get info about Ticket by ID
-	Ticket readRow(int id);
+	Ticket readRow(String id);
 
 	// Update info about Ticket
 	void updateRow(Ticket ticket);
 
 	// Delete Ticket by ID
-	void deleteRow(int id);
+	void deleteRow(String id);
+
+	// Delete table
+	void dropTable();
 }

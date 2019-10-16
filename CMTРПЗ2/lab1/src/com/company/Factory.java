@@ -3,15 +3,11 @@ package com.company;
 import com.company.entities.Customer;
 import com.company.entities.Plane;
 import com.company.entities.Ticket;
-import com.company.sql.CustomerSQL;
-import com.company.sql.PlaneSQL;
-import com.company.sql.TicketSQL;
 
-import java.nio.charset.Charset;
 import java.security.SecureRandom;
 import java.util.Random;
 
-public class Facade {
+public class Factory {
 	private static String[] customerNames = {
 			"Nikolay",
 			"Alexandr",
@@ -100,39 +96,11 @@ public class Facade {
 			return plane;
 		} else if (entity == Entity.Ticket) {
 			Ticket ticket = new Ticket();
-			ticket.setCustomer_id(new Random().nextInt(10) + 1);
-			ticket.setPlane_id(new Random().nextInt(5) + 1);
+			ticket.setCustomer_id(Integer.toString(new Random().nextInt(10) + 1));
+			ticket.setPlane_id(Integer.toString(new Random().nextInt(5) + 1));
 			ticket.setPlace(generatePlace());
 			return ticket;
 		}
 		return null;
-	}
-
-	public static void createCustomers() {
-		CustomerSQL customerSQL = new CustomerSQL();
-		customerSQL.createTable();
-		for (int i = 0; i < 10; i++) {
-			Customer c = (Customer) createEntity(Entity.Customer);
-			System.out.println(c);
-			customerSQL.addRow(c);
-		}
-	}
-	public static void createPlanes() {
-		PlaneSQL planeSQL = new PlaneSQL();
-		planeSQL.createTable();
-		for (int i = 0; i < 5; i++) {
-			Plane p = (Plane) createEntity(Entity.Plane);
-			System.out.println(p);
-			planeSQL.addRow(p);
-		}
-	}
-	public static void createTickets() {
-		TicketSQL ticketSQL = new TicketSQL();
-		ticketSQL.createTable();
-		for (int i = 0; i < 5; i++) {
-			Ticket t = (Ticket) createEntity(Entity.Ticket);
-			System.out.println(t);
-			ticketSQL.addRow(t);
-		}
 	}
 }

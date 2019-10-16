@@ -54,16 +54,16 @@ public class PlaneSQL implements PlaneDAO {
 	}
 
 	@Override
-	public Plane readRow(int id) {
+	public Plane readRow(String id) {
 		PreparedStatement preparedStatement;
 		Plane plane = new Plane();
 		String sql = "select * from planes where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, Integer.valueOf(id));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				plane.setId(resultSet.getInt("id"));
+				plane.setId(Integer.toString(resultSet.getInt("id")));
 				plane.setName(resultSet.getString("name"));
 				plane.setCapacity(resultSet.getInt("capacity"));
 			}
@@ -81,7 +81,7 @@ public class PlaneSQL implements PlaneDAO {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, plane.getName());
 			preparedStatement.setInt(2, plane.getCapacity());
-			preparedStatement.setInt(3, plane.getId());
+			preparedStatement.setInt(3, Integer.valueOf(plane.getId()));
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,12 +89,23 @@ public class PlaneSQL implements PlaneDAO {
 	}
 
 	@Override
-	public void deleteRow(int id) {
+	public void deleteRow(String id) {
 		PreparedStatement preparedStatement;
 		String sql = "delete from planes where id=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, Integer.valueOf(id));
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void dropTable() {
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("drop table planes");
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

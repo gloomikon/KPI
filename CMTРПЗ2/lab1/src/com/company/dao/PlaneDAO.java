@@ -11,11 +11,14 @@ public interface PlaneDAO {
 	void addRow(Plane plane);
 
 	// Get info about Plane by ID
-	Plane readRow(int id);
+	Plane readRow(String id);
 
 	// Update info about Plane
 	void updateRow(Plane plane);
 
 	// Delete Plane by ID
-	void deleteRow(int id);
+	void deleteRow(String id);
+
+	// Delete table
+	void dropTable();
 }
