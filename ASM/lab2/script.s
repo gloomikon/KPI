@@ -19,25 +19,29 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 	
 	MAIN PROC FAR
 		ASSUME cs: CSEG, ds: DSEG, ss:STSEG
+
+		push ds
+		xor ax, ax
+		push ax
 		mov ax, DSEG
 		mov ds, ax
 
 		lea dx, startStr
-		call WRITING
+		call far ptr WRITING
 		
-		call READING
+		call far ptr READING
 		
-		call ATOI
+		call far ptr ATOI
 
 		add ax, 15
 		jo overflow_error
 		mov bx, ax
-		call ITOA
+		call far ptr ITOA
 		jmp end_main
 		overflow_error:
 			xor dx, dx
 			lea dx, buffError
-			call WRITING
+			call far ptr WRITING
 		end_main:
 			ret
 	MAIN ENDP
@@ -122,7 +126,7 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 		error:
 			xor dx, dx
 			lea dx, buffError
-			call WRITING
+			call far ptr WRITING
 		exit_atoi:
 			ret
 		ATOI ENDP
@@ -140,4 +144,3 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 	WRITING ENDP
 CSEG ENDS
 END MAIN
-		

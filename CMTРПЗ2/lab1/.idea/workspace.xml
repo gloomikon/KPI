@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="248ef317-ad6d-465c-b370-3b174a08ad65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/FacadeMongo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/FacadeSQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Factory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/mongo/CustomerMongo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/mongo/PlaneMongo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/mongo/TicketMongo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/Facade.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/dao/CustomerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/dao/CustomerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/dao/PlaneDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/dao/PlaneDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/dao/TicketDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/dao/TicketDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/entities/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/entities/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/entities/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/entities/Plane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/entities/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/entities/Ticket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/sql/CustomerSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/sql/CustomerSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/sql/PlaneSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/sql/PlaneSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab1/com/company/sql/TicketSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab1/com/company/sql/TicketSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Facade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/dao/PlaneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/dao/PlaneDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/dao/TicketDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/dao/TicketDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/entities/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/entities/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/entities/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/entities/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/entities/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/sql/CustomerSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/sql/CustomerSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/sql/PlaneSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/sql/PlaneSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/sql/TicketSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/sql/TicketSQL.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1571155823094</updated>
       <workItem from="1571155826811" duration="10161000" />
-      <workItem from="1571213379501" duration="6313000" />
+      <workItem from="1571213379501" duration="7960000" />
     </task>
     <servers />
   </component>
