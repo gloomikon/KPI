@@ -45,6 +45,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../KPI-labs-5/СМТРПЗ-2(Java)/lab02" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -85,6 +86,7 @@
       <updated>1571155823094</updated>
       <workItem from="1571155826811" duration="10161000" />
       <workItem from="1571213379501" duration="7960000" />
+      <workItem from="1572614808873" duration="1190000" />
     </task>
     <servers />
   </component>
