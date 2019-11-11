@@ -12,6 +12,7 @@ DSEG SEGMENT PARA PUBLIC "DATA"
 	yBuffer db 6, ?, 6 dup ('?')
 	x dw ?
 	y dw ?
+	remainder dw ?
 	was_overflow db 0
 DSEG ENDS
 
@@ -67,22 +68,29 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 
 		first:
 			call far ptr FIRST_ACTION
+			mov remainder, dx
 			jmp writing_output
 
 		second:
 			neg y
 			call far ptr SECOND_ACTION
+			mov remainder, dx
 			cmp was_overflow, 1
 			je main_exit
 			jmp writing_output
 		third:
 			call far ptr THIRD_ACTION
+			mov remainder, dx
 			cmp was_overflow, 1
 			je main_exit
 			jmp writing_output
 
 		writing_output:
 			mov bx, ax
+			call far ptr ITOA
+			mov ax, 10
+			int 29h
+			mov bx, remainder
 			call far ptr ITOA
 		main_exit:
 			ret
