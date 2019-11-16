@@ -114,6 +114,8 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 		lea dx, sumStr
 		call far ptr WRITING
 		call far ptr ARRAY_SUM
+		cmp was_overflow, 1
+		je foo4
 		mov bx, sum
 		call far ptr ITOA
 		mov ax, 10
@@ -132,6 +134,8 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 		call far ptr ARRAY_SORT
 		mov ax, n
 		mov i, ax
+		jmp output_array1
+		foo4: jmp foo3
 		output_array1:
 			mov bx, n
 			sub bx, i
@@ -372,9 +376,16 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 			shl bx, 1
 			mov ax, elements[bx]
 			add sum, ax
+			jo error_sum
 			dec i
 			jnz sum_loop
-		ret
+		jmp sum_end
+		error_sum:
+			mov was_overflow, 1
+			lea dx, overflowError
+			call far ptr WRITING
+		sum_end:
+			ret
 	ENDP ARRAY_SUM
 
 	ARRAY_MIN PROC FAR
