@@ -1,3 +1,16 @@
+EXIT_PROGRAM MACRO
+	mov ax, 4c00h
+	int 21h
+ENDM
+
+; INIT_SEGM MACRO
+; 	push ds
+; 	xor ax, ax
+; 	push ax
+; 	mov ax, DSEG
+; 	mov ds, ax
+; ENDM
+
 WRITING MACRO string
 	push ax
 	lea dx, string
@@ -19,12 +32,14 @@ READING MACRO buffer
 	mov ah, 10
 	int 21h
 	pop ax
+	PRINT_CHAR 10
 ENDM
 
 ATOI MACRO buffer
 	LOCAL @@end_label
 	LOCAL @@error
 	LOCAL @@loop_label
+	LOCAL skip_whitespaces, step, sign_check, minus, plus, atoi_end, make_neg
 
 	lea bx, buffer + 2
 	xor ax, ax 		; result
@@ -82,6 +97,7 @@ ENDM
 
 ITOA MACRO number
 	LOCAL @@loop_label
+	LOCAL positive_number, output
 	mov bx, number
 	or bx, bx
 	jns positive_number
