@@ -31,7 +31,6 @@ CSEG SEGMENT PARA PUBLIC "CODE"
 
 		WRITING startStr
 		READING bufferSize
-		PRINT_CHAR 10
 
 
 		ATOI bufferSize
