@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>1486224B-A8C3-49CB-AC34-4261DAC6DAD8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1486224B-A8C3-49CB-AC34-4261DAC6DAD8.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>iPhone_admin project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>iPhone_admin</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build iPhone_admin</string>
+			<key>timeStartedRecording</key>
+			<real>597070143.59604096</real>
+			<key>timeStoppedRecording</key>
+			<real>597070143.74517298</real>
+			<key>title</key>
+			<string>Build iPhone_admin</string>
+			<key>uniqueIdentifier</key>
+			<string>1486224B-A8C3-49CB-AC34-4261DAC6DAD8</string>
+		</dict>
+		<key>537F7C05-098E-401B-92E9-F6E40A84CA70</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>537F7C05-098E-401B-92E9-F6E40A84CA70.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>iPhone_admin project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>iPhone_admin</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build iPhone_admin</string>
+			<key>timeStartedRecording</key>
+			<real>597087854.12467504</real>
+			<key>timeStoppedRecording</key>
+			<real>597087854.32716703</real>
+			<key>title</key>
+			<string>Build iPhone_admin</string>
+			<key>uniqueIdentifier</key>
+			<string>537F7C05-098E-401B-92E9-F6E40A84CA70</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

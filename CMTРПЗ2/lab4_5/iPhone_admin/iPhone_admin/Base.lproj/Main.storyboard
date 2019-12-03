@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uHR-0G-HNo">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Plane-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AddPlaneController" customModule="iPhone_admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dsh-xC-RPa">
+                                <rect key="frame" x="0.0" y="94" width="414" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="596928612.61991501">
+                                    <!--2019-12-01 21:30:12 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Plane Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wA2-IK-vEU">
+                                <rect key="frame" x="20" y="320" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgo-sk-BvX">
+                                <rect key="frame" x="189" y="400" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity of places:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPV-j3-qqZ">
+                                <rect key="frame" x="20" y="400" width="144" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="150" translatesAutoresizingMaskIntoConstraints="NO" id="sfh-6v-uRN">
+                                <rect key="frame" x="286" y="400" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="updatePlaceNumber:" destination="BYZ-38-t0r" eventType="valueChanged" id="6pc-mh-rnz"/>
+                                </connections>
+                            </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHZ-D0-u3N">
+                                <rect key="frame" x="172" y="471" width="70" height="30"/>
+                                <state key="normal" title="Add Plane"/>
+                                <connections>
+                                    <action selector="addPlane:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Bd-DX-YMV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PHZ-D0-u3N" firstAttribute="top" secondItem="mgo-sk-BvX" secondAttribute="bottom" constant="50" id="2LU-mu-8tQ"/>
+                            <constraint firstItem="wA2-IK-vEU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6jS-LO-t75"/>
+                            <constraint firstItem="mgo-sk-BvX" firstAttribute="leading" secondItem="vPV-j3-qqZ" secondAttribute="trailing" constant="25" id="86O-11-cMe"/>
+                            <constraint firstItem="dsh-xC-RPa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="9AD-Zv-AXB"/>
+                            <constraint firstItem="PHZ-D0-u3N" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JtP-Aj-Ntj"/>
+                            <constraint firstItem="dsh-xC-RPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OEn-v5-EKR"/>
+                            <constraint firstItem="vPV-j3-qqZ" firstAttribute="top" secondItem="wA2-IK-vEU" secondAttribute="bottom" constant="50" id="P8r-bS-a4u"/>
+                            <constraint firstItem="dsh-xC-RPa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="itN-pJ-LaY"/>
+                            <constraint firstItem="wA2-IK-vEU" firstAttribute="top" secondItem="dsh-xC-RPa" secondAttribute="bottom" constant="10" id="jcd-iR-sDe"/>
+                            <constraint firstItem="mgo-sk-BvX" firstAttribute="top" secondItem="wA2-IK-vEU" secondAttribute="bottom" constant="50" id="ph6-fS-0I6"/>
+                            <constraint firstItem="vPV-j3-qqZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ufp-D5-CbX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wA2-IK-vEU" secondAttribute="trailing" constant="20" id="uuM-3a-xWP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Add Plane" id="xq8-zz-zN3"/>
+                    <connections>
+                        <outlet property="datePicker" destination="dsh-xC-RPa" id="7qY-Sj-FAd"/>
+                        <outlet property="placeNumber" destination="mgo-sk-BvX" id="ONd-AG-KBd"/>
+                        <outlet property="planeName" destination="wA2-IK-vEU" id="sqq-Mt-6OD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="-62"/>
+        </scene>
+        <!--All Tickets-->
+        <scene sceneID="m3U-fU-tfB">
+            <objects>
+                <viewController id="eUT-tg-PUj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XJv-si-FrO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="FPb-7n-cDs"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="All Tickets" id="Mf0-ey-lvy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9Y-uL-Ubl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1794" y="-62"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8si-YB-xCF">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uHR-0G-HNo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p2A-Zj-UMo">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="EKR-cY-4YY"/>
+                        <segue destination="wep-n4-bcS" kind="relationship" relationship="viewControllers" id="wor-gS-pFS"/>
+                        <segue destination="eUT-tg-PUj" kind="relationship" relationship="viewControllers" id="oKe-lN-W2t"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SC2-jF-uAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--All Planes-->
+        <scene sceneID="Qsw-e9-5Fb">
+            <objects>
+                <viewController id="wep-n4-bcS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V0X-mK-yGw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hKg-VY-5jT"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="All Planes" id="7GV-fz-WWE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thy-OE-SMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="603"/>
+        </scene>
+    </scenes>
+</document>

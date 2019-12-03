@@ -1,0 +1,411 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AuthorisationEvent"
+- "AuthorisationCommand"
+- "AuthorisationKitchen"
+provides-nominal:
+- "4lab518AuthorisationEventO"
+- "4lab520AuthorisationCommandO"
+- "4lab520AuthorisationKitchenC"
+provides-member:
+- ["4lab518AuthorisationEventO", ""]
+- ["4lab520AuthorisationCommandO", ""]
+- ["4lab520AuthorisationKitchenC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "=="
+- "AnyKitchenProtocol"
+- "AssignmentPrecedence"
+- "AuthorisationCommand"
+- "AuthorisationController"
+- "AuthorisationEvent"
+- "AuthorisationKitchen"
+- "Bool"
+- !private "BooleanLiteralType"
+- !private "CastingPrecedence"
+- "FloatLiteralType"
+- !private "GraphRequest"
+- !private "Int"
+- "IntegerLiteralType"
+- !private "LoginManager"
+- !private "NSDictionary"
+- !private "ServerAPI"
+- !private "String"
+- !private "StringLiteralType"
+- !private "User"
+- !private "Void"
+- !private "print"
+- !private "user"
+depends-member:
+- !private ["s18AdditiveArithmeticP", "init"]
+- !private ["4lab518AnyKitchenProtocolP", "GraphRequest"]
+- !private ["4lab518AnyKitchenProtocolP", "Int"]
+- !private ["4lab518AnyKitchenProtocolP", "LoginManager"]
+- !private ["4lab518AnyKitchenProtocolP", "ServerAPI"]
+- !private ["4lab518AnyKitchenProtocolP", "String"]
+- !private ["4lab518AnyKitchenProtocolP", "User"]
+- ["4lab518AnyKitchenProtocolP", ""]
+- !private ["4lab518AnyKitchenProtocolP", "delegate"]
+- ["4lab518AnyKitchenProtocolP", "performActionAfterRequest"]
+- !private ["4lab518AnyKitchenProtocolP", "performSignIn"]
+- !private ["4lab518AnyKitchenProtocolP", "performSignUp"]
+- !private ["4lab518AnyKitchenProtocolP", "print"]
+- !private ["4lab518AnyKitchenProtocolP", "user"]
+- ["4lab520AuthorisationCommandO", "=="]
+- ["4lab520AuthorisationCommandO", "__derived_enum_equals"]
+- ["4lab520AuthorisationCommandO", "_rawHashValue"]
+- ["4lab520AuthorisationCommandO", "deinit"]
+- ["4lab520AuthorisationCommandO", "hash"]
+- ["4lab520AuthorisationCommandO", "hashValue"]
+- ["4lab520AuthorisationCommandO", "userAuthorised"]
+- !private ["4lab523AuthorisationControllerC", "deinit"]
+- !private ["4lab523AuthorisationControllerC", "displayError"]
+- !private ["4lab523AuthorisationControllerC", "perform"]
+- ["4lab518AuthorisationEventO", "=="]
+- ["4lab518AuthorisationEventO", "__derived_enum_equals"]
+- ["4lab518AuthorisationEventO", "_rawHashValue"]
+- ["4lab518AuthorisationEventO", "deinit"]
+- ["4lab518AuthorisationEventO", "hash"]
+- ["4lab518AuthorisationEventO", "hashValue"]
+- ["4lab518AuthorisationEventO", "signIn"]
+- ["4lab518AuthorisationEventO", "signUp"]
+- ["4lab520AuthorisationKitchenC", "AuthorisationController"]
+- ["4lab520AuthorisationKitchenC", "AuthorisationEvent"]
+- ["4lab520AuthorisationKitchenC", "Bool"]
+- !private ["4lab520AuthorisationKitchenC", "GraphRequest"]
+- !private ["4lab520AuthorisationKitchenC", "Int"]
+- !private ["4lab520AuthorisationKitchenC", "LoginManager"]
+- !private ["4lab520AuthorisationKitchenC", "NSDictionary"]
+- !private ["4lab520AuthorisationKitchenC", "ServerAPI"]
+- !private ["4lab520AuthorisationKitchenC", "String"]
+- !private ["4lab520AuthorisationKitchenC", "User"]
+- !private ["4lab520AuthorisationKitchenC", "Void"]
+- ["4lab520AuthorisationKitchenC", "deinit"]
+- !private ["4lab520AuthorisationKitchenC", "delegate"]
+- ["4lab520AuthorisationKitchenC", "init"]
+- ["4lab520AuthorisationKitchenC", "performActionAfterRequest"]
+- !private ["4lab520AuthorisationKitchenC", "performSignIn"]
+- !private ["4lab520AuthorisationKitchenC", "performSignUp"]
+- !private ["4lab520AuthorisationKitchenC", "print"]
+- ["4lab520AuthorisationKitchenC", "receive"]
+- !private ["4lab520AuthorisationKitchenC", "user"]
+- !private ["SK", "init"]
+- !private ["Sz", "init"]
+- !private ["s7CVarArgP", "displayError"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "logIn"]
+- !private ["s7CVarArgP", "perform"]
+- !private ["s7CVarArgP", "start"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s7CVarArgP", "token"]
+- !private ["Sl", "init"]
+- !private ["SL", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "displayError"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "logIn"]
+- !private ["s28CustomDebugStringConvertibleP", "perform"]
+- !private ["s28CustomDebugStringConvertibleP", "start"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "token"]
+- !private ["s17CustomReflectableP", "displayError"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "perform"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "displayError"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "logIn"]
+- !private ["s23CustomStringConvertibleP", "perform"]
+- !private ["s23CustomStringConvertibleP", "start"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "token"]
+- !private ["Se", "displayError"]
+- !private ["Se", "init"]
+- !private ["Se", "perform"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SE", "displayError"]
+- !private ["SE", "init"]
+- !private ["SE", "perform"]
+- ["SQ", "=="]
+- ["SQ", ""]
+- ["SQ", "_rawHashValue"]
+- !private ["SQ", "displayError"]
+- ["SQ", "hash"]
+- ["SQ", "hashValue"]
+- !private ["SQ", "init"]
+- !private ["SQ", "logIn"]
+- !private ["SQ", "perform"]
+- ["SQ", "signIn"]
+- ["SQ", "signUp"]
+- !private ["SQ", "start"]
+- !private ["SQ", "subscript"]
+- !private ["SQ", "token"]
+- !private ["SQ", "userAuthorised"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s23ExpressibleByNilLiteralP", "displayError"]
+- !private ["s23ExpressibleByNilLiteralP", "perform"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "init"]
+- !private ["So17FBSDKGraphRequestC", "init"]
+- !private ["So17FBSDKGraphRequestC", "start"]
+- ["SH", "=="]
+- ["SH", ""]
+- ["SH", "_rawHashValue"]
+- !private ["SH", "displayError"]
+- ["SH", "hash"]
+- ["SH", "hashValue"]
+- !private ["SH", "init"]
+- !private ["SH", "logIn"]
+- !private ["SH", "perform"]
+- ["SH", "signIn"]
+- ["SH", "signUp"]
+- !private ["SH", "start"]
+- !private ["SH", "subscript"]
+- !private ["SH", "token"]
+- !private ["SH", "userAuthorised"]
+- !private ["s6HasherV", "combine"]
+- !private ["Si", "init"]
+- !private ["So17FBSDKLoginManagerC", "init"]
+- !private ["So17FBSDKLoginManagerC", "logIn"]
+- !private ["So28FBSDKLoginManagerLoginResultC", "token"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "displayError"]
+- !private ["So8NSCodingP", "perform"]
+- !private ["So8NSCodingP", "subscript"]
+- !private ["So9NSCopyingP", "subscript"]
+- !private ["So12NSDictionaryC", "subscript"]
+- !private ["So26NSExtensionRequestHandlingP", "displayError"]
+- !private ["So26NSExtensionRequestHandlingP", "perform"]
+- !private ["So17NSFastEnumerationP", "subscript"]
+- !private ["So16NSMutableCopyingP", "subscript"]
+- !private ["So8NSObjectC", "displayError"]
+- !private ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "logIn"]
+- !private ["So8NSObjectC", "perform"]
+- !private ["So8NSObjectC", "start"]
+- !private ["So8NSObjectC", "subscript"]
+- !private ["So8NSObjectC", "token"]
+- !private ["So8NSObjectP", "displayError"]
+- !private ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "logIn"]
+- !private ["So8NSObjectP", "perform"]
+- !private ["So8NSObjectP", "start"]
+- !private ["So8NSObjectP", "subscript"]
+- !private ["So8NSObjectP", "token"]
+- !private ["So14NSSecureCodingP", "subscript"]
+- !private ["Sj", "init"]
+- !private ["Sq", "displayError"]
+- !private ["Sq", "perform"]
+- !private ["Sm", "init"]
+- !private ["s10SIMDScalarP", "init"]
+- !private ["ST", "init"]
+- !private ["ST", "subscript"]
+- !private ["4lab59ServerAPIC", "getUser"]
+- !private ["4lab59ServerAPIC", "postUser"]
+- !private ["4lab59ServerAPIC", "shared"]
+- !private ["SZ", "init"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["Sx", "init"]
+- !private ["SS", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["Sy", "init"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["So21UIAppearanceContainerP", "displayError"]
+- !private ["So21UIAppearanceContainerP", "perform"]
+- !private ["So18UIContentContainerP", "displayError"]
+- !private ["So18UIContentContainerP", "perform"]
+- !private ["So18UIFocusEnvironmentP", "displayError"]
+- !private ["So18UIFocusEnvironmentP", "perform"]
+- !private ["So30UIPasteConfigurationSupportingP", "displayError"]
+- !private ["So30UIPasteConfigurationSupportingP", "perform"]
+- !private ["So11UIResponderC", "displayError"]
+- !private ["So11UIResponderC", "perform"]
+- !private ["So30UIResponderStandardEditActionsP", "displayError"]
+- !private ["So30UIResponderStandardEditActionsP", "perform"]
+- !private ["So16UIStateRestoringP", "displayError"]
+- !private ["So16UIStateRestoringP", "perform"]
+- !private ["So18UITraitEnvironmentP", "displayError"]
+- !private ["So18UITraitEnvironmentP", "perform"]
+- !private ["So23UIUserActivityRestoringP", "displayError"]
+- !private ["So23UIUserActivityRestoringP", "perform"]
+- !private ["So16UIViewControllerC", "displayError"]
+- !private ["So16UIViewControllerC", "perform"]
+- !private ["4lab54UserV", "id"]
+- !private ["4lab54UserV", "init"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "displayError"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "logIn"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "perform"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "start"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "token"]
+- !private ["s21_ObjectiveCBridgeableP", "displayError"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "perform"]
+depends-nominal:
+- !private "s18AdditiveArithmeticP"
+- "4lab518AnyKitchenProtocolP"
+- "4lab520AuthorisationCommandO"
+- !private "4lab523AuthorisationControllerC"
+- "4lab518AuthorisationEventO"
+- "4lab520AuthorisationKitchenC"
+- !private "SK"
+- !private "Sz"
+- !private "s7CVarArgP"
+- !private "Sl"
+- !private "SL"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "Se"
+- !private "s26DefaultStringInterpolationV"
+- !private "SE"
+- "SQ"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s17FixedWidthIntegerP"
+- !private "So17FBSDKGraphRequestC"
+- "SH"
+- !private "s6HasherV"
+- !private "Si"
+- !private "So17FBSDKLoginManagerC"
+- !private "So28FBSDKLoginManagerLoginResultC"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So12NSDictionaryC"
+- !private "So26NSExtensionRequestHandlingP"
+- !private "So17NSFastEnumerationP"
+- !private "So16NSMutableCopyingP"
+- !private "So8NSObjectC"
+- !private "So8NSObjectP"
+- !private "So14NSSecureCodingP"
+- !private "Sj"
+- !private "Sq"
+- !private "Sm"
+- !private "s10SIMDScalarP"
+- !private "ST"
+- !private "4lab59ServerAPIC"
+- !private "SZ"
+- !private "s13SignedNumericP"
+- !private "Sx"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So21UIAppearanceContainerP"
+- !private "So18UIContentContainerP"
+- !private "So18UIFocusEnvironmentP"
+- !private "So30UIPasteConfigurationSupportingP"
+- !private "So11UIResponderC"
+- !private "So30UIResponderStandardEditActionsP"
+- !private "So16UIStateRestoringP"
+- !private "So18UITraitEnvironmentP"
+- !private "So23UIUserActivityRestoringP"
+- !private "So16UIViewControllerC"
+- !private "4lab54UserV"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKURL.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKCoreKit-umbrella.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginKit-umbrella.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKProfile.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKApplicationDelegate.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLinkResolving.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKCopying.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKMutableCopying.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLink.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAccessToken.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLinkNavigation.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestConnection.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKButton.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginButton.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKDeviceLoginCodeInfo.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginManager.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKDeviceLoginManager.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKTestUsersManager.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLinkReturnToRefererController.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLinkResolver.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKWebViewAppLinkResolver.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKGraphErrorRecoveryProcessor.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKSettings.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKConstants.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginConstants.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppEvents.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLinkTarget.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKCoreKit.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginKit.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginManagerLoginResult.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKDeviceLoginManagerResult.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestDataAttachment.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKMeasurementEvent.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKGraphRequest.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKProfilePictureView.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKTooltipView.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginTooltipView.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLinkReturnToRefererView.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKUtility.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppLinkUtility.h"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
+- "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/Build/DerivedData/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/WebKit.framework/Headers/WebKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.4.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "84f6584a33c48f6088f7bb5e38cf6e21"

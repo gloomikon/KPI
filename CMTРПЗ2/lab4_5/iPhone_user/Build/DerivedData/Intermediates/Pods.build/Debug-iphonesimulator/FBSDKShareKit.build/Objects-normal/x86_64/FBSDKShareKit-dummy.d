@@ -1,0 +1,4 @@
+dependencies: \
+  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Pods/Target\ Support\ Files/FBSDKShareKit/FBSDKShareKit-dummy.m \
+  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Build/DerivedData/Intermediates/Pods.build/Debug-iphonesimulator/FBSDKShareKit.build/module.modulemap \
+  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Pods/Target\ Support\ Files/FBSDKShareKit/FBSDKShareKit-prefix.pch

@@ -1,0 +1,15 @@
+version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+options: "d2dc4c9cceafe3a4220cfb90fb8d60db"
+build_time: [1575395001, 127482000]
+inputs:
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/Profle/ProfileController.swift": [1575378258, 434422133]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/Authorisation/AuthorisationController.swift": [1575394799, 569299731]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/Places/PlacesViewController.swift": [1575394783, 4729785]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/AppDelegate.swift": [1575211992, 499807809]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/Authorisation/AuthorisationKitchen.swift": [1575228074, 670473795]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/AnyKitchen.swift": [1575219890, 854258795]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/ViewController+Error.swift": [1575219660, 591613833]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/Planes/PlanesCustomCell.swift": [1575276277, 868587398]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/Places/PlacesCustomCell.swift": [1575378844, 569875885]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/ServerAPI.swift": [1575395000, 716523709]
+  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_user/lab5/Planes/PlanesViewController.swift": [1575373608, 779118946]
