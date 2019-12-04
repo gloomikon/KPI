@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		772179E82398335100C53738 /* PlaneCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179E72398335100C53738 /* PlaneCustomCell.swift */; };
+		772179EA239835D400C53738 /* PlaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179E9239835D400C53738 /* PlaneViewController.swift */; };
+		772179EE2398799400C53738 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179ED2398799400C53738 /* TicketsViewController.swift */; };
+		772179F1239879FC00C53738 /* TicketsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179F0239879FC00C53738 /* TicketsCustomCell.swift */; };
 		77397558239467CD00298F35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77397557239467CD00298F35 /* AppDelegate.swift */; };
 		7739755A239467CD00298F35 /* AddPlaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77397559239467CD00298F35 /* AddPlaneController.swift */; };
 		7739755D239467CD00298F35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7739755B239467CD00298F35 /* Main.storyboard */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		772179E72398335100C53738 /* PlaneCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneCustomCell.swift; sourceTree = "<group>"; };
+		772179E9239835D400C53738 /* PlaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneViewController.swift; sourceTree = "<group>"; };
+		772179ED2398799400C53738 /* TicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
+		772179F0239879FC00C53738 /* TicketsCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsCustomCell.swift; sourceTree = "<group>"; };
 		77397554239467CD00298F35 /* iPhone_admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhone_admin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77397557239467CD00298F35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77397559239467CD00298F35 /* AddPlaneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaneController.swift; sourceTree = "<group>"; };
@@ -35,6 +43,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772179EB2398796A00C53738 /* PlaneDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				772179E72398335100C53738 /* PlaneCustomCell.swift */,
+				772179E9239835D400C53738 /* PlaneViewController.swift */,
+			);
+			path = PlaneDisplay;
+			sourceTree = "<group>";
+		};
+		772179EC2398797E00C53738 /* PlaneAdd */ = {
+			isa = PBXGroup;
+			children = (
+				77397559239467CD00298F35 /* AddPlaneController.swift */,
+			);
+			path = PlaneAdd;
+			sourceTree = "<group>";
+		};
+		772179EF239879DF00C53738 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				772179F0239879FC00C53738 /* TicketsCustomCell.swift */,
+				772179ED2398799400C53738 /* TicketsViewController.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
 		7739754B239467CD00298F35 = {
 			isa = PBXGroup;
 			children = (
@@ -55,7 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				77397557239467CD00298F35 /* AppDelegate.swift */,
-				77397559239467CD00298F35 /* AddPlaneController.swift */,
+				772179EF239879DF00C53738 /* Tickets */,
+				772179EB2398796A00C53738 /* PlaneDisplay */,
+				772179EC2398797E00C53738 /* PlaneAdd */,
 				7739755B239467CD00298F35 /* Main.storyboard */,
 				7739755E239467CD00298F35 /* Assets.xcassets */,
 				77397560239467CD00298F35 /* LaunchScreen.storyboard */,
@@ -135,8 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772179E82398335100C53738 /* PlaneCustomCell.swift in Sources */,
+				772179EE2398799400C53738 /* TicketsViewController.swift in Sources */,
 				7739755A239467CD00298F35 /* AddPlaneController.swift in Sources */,
 				77397558239467CD00298F35 /* AppDelegate.swift in Sources */,
+				772179F1239879FC00C53738 /* TicketsCustomCell.swift in Sources */,
+				772179EA239835D400C53738 /* PlaneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

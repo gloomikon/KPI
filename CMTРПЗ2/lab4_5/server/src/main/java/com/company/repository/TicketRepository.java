@@ -1,5 +1,6 @@
 package com.company.repository;
 
+import com.company.entity.TicketAdmin;
 import com.company.entity.TicketUser;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
@@ -25,6 +26,24 @@ public class TicketRepository {
             t.setDate((Date)row[2]);
             t.setPlaceName((String)row[3]);
 
+            tl.add(t);
+            System.out.println(t);
+        }
+        return tl;
+    }
+
+    public List<TicketAdmin> getAdminTickets() {
+        List<TicketAdmin> tl = new ArrayList<>();
+        List<Object[]> results = em.createQuery(
+                "SELECT p.id, pl.name, pl.date, p.name, c.name FROM Place p, Plane pl, Customer c WHERE p.customerId is not null and p.planeId = pl.id", Object[].class)
+                .getResultList();
+        for (Object[] row : results) {
+            TicketAdmin t = new TicketAdmin();
+            t.setId((Integer) row[0]);
+            t.setPlaneName((String)row[1]);
+            t.setDate((Date)row[2]);
+            t.setPlaceName((String)row[3]);
+            t.setCustomerName((String)row[4]);
             tl.add(t);
             System.out.println(t);
         }

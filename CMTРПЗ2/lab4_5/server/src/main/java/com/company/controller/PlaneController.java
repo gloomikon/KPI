@@ -51,7 +51,7 @@ public class PlaneController {
         return prettyJson;
     }
 
-    @PostMapping("")
+    @PutMapping("")
     public Boolean addPlane(@RequestBody
                             @RequestParam(value = "name", required = true) String name,
                             @RequestParam(value = "capacity", required = true) Integer capacity,
@@ -69,5 +69,21 @@ public class PlaneController {
             placeRepository.save(place);
         }
         return true;
+    }
+
+    @DeleteMapping("")
+    public void delPlane(@RequestParam(value = "id", required = true) Integer id) {
+        planeRepository.deleteById(id);
+    }
+
+    @PostMapping
+    public void updPlane(@RequestParam(value = "id", required = true) Integer id,
+                         @RequestParam(value = "name", required = true) String name,
+                         @RequestParam(value = "date", required = true) String date) throws ParseException {
+        Optional<Plane> plane = planeRepository.findById(id);
+        Date date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(date);
+        plane.get().setDate(date1);
+        plane.get().setName(name);
+        planeRepository.save(plane.get());
     }
 }

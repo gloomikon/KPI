@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
-options: "34eaf84e7cb775bbd4008cece7d500c8"
-build_time: [1575319611, 467806000]
-inputs:
-  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_admin/iPhone_admin/AddPlaneController.swift": [1575319610, 996975966]
-  "/Users/gloomikon/Desktop/KPI/CMT\u0420\u041F\u04172/lab4_5/iPhone_admin/iPhone_admin/AppDelegate.swift": [1575235661, 32950126]

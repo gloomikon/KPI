@@ -74,7 +74,7 @@ extension PlanesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PlanesCustomCell
-        cell.name.text = allPlanes[indexPath.row].name
+        cell.name.text = sortedPlanes![indexPath.row].name
         cell.capacity.text = String(sortedPlanes![indexPath.row].capacity)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
