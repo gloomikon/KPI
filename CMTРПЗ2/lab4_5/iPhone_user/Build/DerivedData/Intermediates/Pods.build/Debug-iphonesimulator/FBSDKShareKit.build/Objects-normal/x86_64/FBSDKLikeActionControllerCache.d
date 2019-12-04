@@ -1,7 +1,0 @@
-dependencies: \
-  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Pods/FBSDKShareKit/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeActionControllerCache.m \
-  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Build/DerivedData/Intermediates/Pods.build/Debug-iphonesimulator/FBSDKShareKit.build/module.modulemap \
-  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Pods/Target\ Support\ Files/FBSDKShareKit/FBSDKShareKit-prefix.pch \
-  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Pods/FBSDKShareKit/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeActionControllerCache.h \
-  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Pods/FBSDKShareKit/FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeActionController.h \
-  /Users/gloomikon/Desktop/KPI/CMTРПЗ2/lab4_5/iPhone_user/Pods/FBSDKShareKit/FBSDKShareKit/FBSDKShareKit/FBSDKLikeObjectType.h
