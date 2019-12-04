@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3577EC241BA8E35C5994C680 /* Pods_lab5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022AE63E51D363664401DB37 /* Pods_lab5.framework */; };
+		772179D92397F2B800C53738 /* TicketsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179D82397F2B800C53738 /* TicketsCustomCell.swift */; };
+		772179DB2397F40700C53738 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179DA2397F40700C53738 /* TicketsViewController.swift */; };
+		772179DE2397FE8000C53738 /* PlanesNoUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179DD2397FE8000C53738 /* PlanesNoUserViewController.swift */; };
+		772179E02397FF8500C53738 /* PlanesNoUserCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179DF2397FF8500C53738 /* PlanesNoUserCustomCell.swift */; };
+		772179E32398077100C53738 /* PlacesUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179E22398077100C53738 /* PlacesUserViewController.swift */; };
+		772179E52398082900C53738 /* PlacesNoUserCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772179E42398082900C53738 /* PlacesNoUserCustomCell.swift */; };
 		7739752C23927FBF00298F35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739752B23927FBF00298F35 /* AppDelegate.swift */; };
 		7739752E23927FBF00298F35 /* AuthorisationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739752D23927FBF00298F35 /* AuthorisationController.swift */; };
 		7739753123927FBF00298F35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7739752F23927FBF00298F35 /* Main.storyboard */; };
@@ -27,6 +33,12 @@
 /* Begin PBXFileReference section */
 		022AE63E51D363664401DB37 /* Pods_lab5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lab5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFBB593A34D85938782726C /* Pods-lab5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lab5.release.xcconfig"; path = "Target Support Files/Pods-lab5/Pods-lab5.release.xcconfig"; sourceTree = "<group>"; };
+		772179D82397F2B800C53738 /* TicketsCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsCustomCell.swift; sourceTree = "<group>"; };
+		772179DA2397F40700C53738 /* TicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
+		772179DD2397FE8000C53738 /* PlanesNoUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanesNoUserViewController.swift; sourceTree = "<group>"; };
+		772179DF2397FF8500C53738 /* PlanesNoUserCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanesNoUserCustomCell.swift; path = lab5/PlanesNoUserCustomCell.swift; sourceTree = SOURCE_ROOT; };
+		772179E22398077100C53738 /* PlacesUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesUserViewController.swift; sourceTree = "<group>"; };
+		772179E42398082900C53738 /* PlacesNoUserCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesNoUserCustomCell.swift; sourceTree = "<group>"; };
 		7739752823927FBF00298F35 /* lab5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lab5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7739752B23927FBF00298F35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7739752D23927FBF00298F35 /* AuthorisationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationController.swift; sourceTree = "<group>"; };
@@ -58,6 +70,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772179DC2397F40D00C53738 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				772179D82397F2B800C53738 /* TicketsCustomCell.swift */,
+				772179DA2397F40700C53738 /* TicketsViewController.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		772179E12398074A00C53738 /* PlanesNoUser */ = {
+			isa = PBXGroup;
+			children = (
+				772179DD2397FE8000C53738 /* PlanesNoUserViewController.swift */,
+				772179DF2397FF8500C53738 /* PlanesNoUserCustomCell.swift */,
+			);
+			name = PlanesNoUser;
+			sourceTree = "<group>";
+		};
+		772179E623980B8800C53738 /* PlacesNoUser */ = {
+			isa = PBXGroup;
+			children = (
+				772179E22398077100C53738 /* PlacesUserViewController.swift */,
+				772179E42398082900C53738 /* PlacesNoUserCustomCell.swift */,
+			);
+			path = PlacesNoUser;
+			sourceTree = "<group>";
+		};
 		7739751F23927FBF00298F35 = {
 			isa = PBXGroup;
 			children = (
@@ -79,14 +118,17 @@
 		7739752A23927FBF00298F35 /* lab5 */ = {
 			isa = PBXGroup;
 			children = (
+				7739754223941CB500298F35 /* ViewController+Error.swift */,
+				773975402392B71800298F35 /* ServerAPI.swift */,
+				773975442394289700298F35 /* AnyKitchen.swift */,
 				7739752B23927FBF00298F35 /* AppDelegate.swift */,
 				7739753D2392B56E00298F35 /* Authorisation */,
+				772179E12398074A00C53738 /* PlanesNoUser */,
+				772179E623980B8800C53738 /* PlacesNoUser */,
+				772179DC2397F40D00C53738 /* Tickets */,
 				77E8E0E623967EAE00CB25C6 /* Places */,
 				7739754A23944C5900298F35 /* Profle */,
 				776243FB2395031E00276527 /* Planes */,
-				7739754223941CB500298F35 /* ViewController+Error.swift */,
-				773975442394289700298F35 /* AnyKitchen.swift */,
-				773975402392B71800298F35 /* ServerAPI.swift */,
 				7739752F23927FBF00298F35 /* Main.storyboard */,
 				7739753223927FBF00298F35 /* Assets.xcassets */,
 				7739753423927FBF00298F35 /* LaunchScreen.storyboard */,
@@ -266,13 +308,19 @@
 				7739752E23927FBF00298F35 /* AuthorisationController.swift in Sources */,
 				77E8E0E523967EA500CB25C6 /* PlacesViewController.swift in Sources */,
 				7739752C23927FBF00298F35 /* AppDelegate.swift in Sources */,
+				772179D92397F2B800C53738 /* TicketsCustomCell.swift in Sources */,
+				772179E02397FF8500C53738 /* PlanesNoUserCustomCell.swift in Sources */,
 				7739753F2392B59200298F35 /* AuthorisationKitchen.swift in Sources */,
 				773975452394289700298F35 /* AnyKitchen.swift in Sources */,
 				7739754323941CB500298F35 /* ViewController+Error.swift in Sources */,
 				776243FD2395035100276527 /* PlanesCustomCell.swift in Sources */,
 				77E8E0E8239694D100CB25C6 /* PlacesCustomCell.swift in Sources */,
+				772179E52398082900C53738 /* PlacesNoUserCustomCell.swift in Sources */,
+				772179E32398077100C53738 /* PlacesUserViewController.swift in Sources */,
+				772179DE2397FE8000C53738 /* PlanesNoUserViewController.swift in Sources */,
 				773975412392B71800298F35 /* ServerAPI.swift in Sources */,
 				776243FA2395031A00276527 /* PlanesViewController.swift in Sources */,
+				772179DB2397F40700C53738 /* TicketsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,11 +1,3 @@
-//
-//  PlanesCustomCell.swift
-//  lab5
-//
-//  Created by Nikolay Zhurba on 12/2/19.
-//  Copyright © 2019 Nikolay Zhurba. All rights reserved.
-//
-
 import UIKit
 
 class PlanesCustomCell: UITableViewCell {

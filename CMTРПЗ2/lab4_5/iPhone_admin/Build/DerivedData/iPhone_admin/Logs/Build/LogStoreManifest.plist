@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>1486224B-A8C3-49CB-AC34-4261DAC6DAD8</key>
+		<key>01D53461-6D88-4AFB-AE4A-EF0410FB237B</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>1486224B-A8C3-49CB-AC34-4261DAC6DAD8.xcactivitylog</string>
+			<string>01D53461-6D88-4AFB-AE4A-EF0410FB237B.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -30,15 +30,15 @@
 			<key>signature</key>
 			<string>Build iPhone_admin</string>
 			<key>timeStartedRecording</key>
-			<real>597070143.59604096</real>
+			<real>597165432.90079904</real>
 			<key>timeStoppedRecording</key>
-			<real>597070143.74517298</real>
+			<real>597165433.06718004</real>
 			<key>title</key>
 			<string>Build iPhone_admin</string>
 			<key>uniqueIdentifier</key>
-			<string>1486224B-A8C3-49CB-AC34-4261DAC6DAD8</string>
+			<string>01D53461-6D88-4AFB-AE4A-EF0410FB237B</string>
 		</dict>
-		<key>537F7C05-098E-401B-92E9-F6E40A84CA70</key>
+		<key>6E786ABA-FF8A-4C9E-9605-4E58061B3CC9</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -47,7 +47,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>537F7C05-098E-401B-92E9-F6E40A84CA70.xcactivitylog</string>
+			<string>6E786ABA-FF8A-4C9E-9605-4E58061B3CC9.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -62,13 +62,13 @@
 			<key>signature</key>
 			<string>Build iPhone_admin</string>
 			<key>timeStartedRecording</key>
-			<real>597087854.12467504</real>
+			<real>597165818.31816995</real>
 			<key>timeStoppedRecording</key>
-			<real>597087854.32716703</real>
+			<real>597165818.46748197</real>
 			<key>title</key>
 			<string>Build iPhone_admin</string>
 			<key>uniqueIdentifier</key>
-			<string>537F7C05-098E-401B-92E9-F6E40A84CA70</string>
+			<string>6E786ABA-FF8A-4C9E-9605-4E58061B3CC9</string>
 		</dict>
 	</dict>
 </dict>

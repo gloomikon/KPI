@@ -208,6 +208,7 @@ SWIFT_CLASS("_TtC4lab523AuthorisationController")
 @interface AuthorisationController : UIViewController
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified signIn;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified signUp;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified viewPlanes;
 - (void)viewDidLoad;
 - (IBAction)loginWithFacebook:(id _Nonnull)sender;
 - (IBAction)signUpWithFacebook:(id _Nonnull)sender;
@@ -229,7 +230,37 @@ SWIFT_CLASS("_TtC4lab516PlacesCustomCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC4lab522PlacesNoUserCustomCell")
+@interface PlacesNoUserCustomCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified name;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified isFree;
+- (void)awakeFromNib;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UITableView;
+
+SWIFT_CLASS("_TtC4lab526PlacesNoUserViewController")
+@interface PlacesNoUserViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified planeName;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified planeCapacity;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified planeDate;
+@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface PlacesNoUserViewController (SWIFT_EXTENSION(lab5)) <UITableViewDataSource, UITableViewDelegate>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 SWIFT_CLASS("_TtC4lab520PlacesViewController")
 @interface PlacesViewController : UIViewController
@@ -261,8 +292,41 @@ SWIFT_CLASS("_TtC4lab516PlanesCustomCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC4lab522PlanesNoUserCustomCell")
+@interface PlanesNoUserCustomCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified name;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified capacity;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified date;
+- (void)awakeFromNib;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UIDatePicker;
 @class UITextField;
+
+SWIFT_CLASS("_TtC4lab526PlanesNoUserViewController")
+@interface PlanesNoUserViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
+@property (nonatomic, weak) IBOutlet UIDatePicker * _Null_unspecified datePicker;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified planeName;
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
+- (IBAction)filterPlanes:(id _Nonnull)sender;
+- (IBAction)cancelFilter:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface PlanesNoUserViewController (SWIFT_EXTENSION(lab5)) <UITableViewDataSource, UITableViewDelegate>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
 
 SWIFT_CLASS("_TtC4lab520PlanesViewController")
 @interface PlanesViewController : UIViewController
@@ -295,6 +359,35 @@ SWIFT_CLASS("_TtC4lab517ProfileController")
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC4lab517TicketsCustomCell")
+@interface TicketsCustomCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified planeName;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified placeName;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified date;
+- (void)awakeFromNib;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
+- (IBAction)deleteTicket:(id _Nonnull)sender;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC4lab521TicketsViewController")
+@interface TicketsViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface TicketsViewController (SWIFT_EXTENSION(lab5)) <UITableViewDataSource, UITableViewDelegate>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 

@@ -1,5 +1,6 @@
 package com.company.config;
 
+import com.company.repository.PlaceRepository;
 import com.company.repository.PlaneRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,8 +56,8 @@ public class Config {
         return hibernateProperties;
     }
 
-//    @Bean(name="PlaneRepository")
-//    public PlaneRepository getProductRepository() {
-//        return new PlaneRepository();
-//    }
+    @Bean(name="PlaceRepository")
+    public PlaceRepository getPlaneRepository() {
+        return new PlaceRepository();
+    }
 }

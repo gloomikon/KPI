@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 @Repository
 public class PlaceRepository {
@@ -16,10 +17,12 @@ public class PlaceRepository {
                 "SELECT p FROM Place p WHERE p.planeId = :planeId", Place.class);
         return query.setParameter("planeId", planeId).getResultList();
     }
-
+    @Transactional
     public void save(Place place) {
-        em.getTransaction().begin();
         em.merge(place);
-        em.getTransaction().commit();
+    }
+
+    public Place findById(int id) {
+        return em.find(Place.class, id);
     }
 }

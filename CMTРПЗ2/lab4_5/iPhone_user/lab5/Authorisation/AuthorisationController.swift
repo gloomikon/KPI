@@ -11,6 +11,7 @@ var user: User?
 class AuthorisationController: UIViewController {
     @IBOutlet weak var signIn: UIButton!
     @IBOutlet weak var signUp: UIButton!
+    @IBOutlet weak var viewPlanes: UIButton!
 
     let layer = CAGradientLayer()
     var kitchen: AuthorisationKitchen!
@@ -21,6 +22,7 @@ class AuthorisationController: UIViewController {
         layer.frame = view.bounds
         signIn.layer.cornerRadius = 10
         signUp.layer.cornerRadius = 10
+        viewPlanes.layer.cornerRadius = 10
         layer.colors = [UIColor.white.cgColor, UIColor.purple.cgColor, UIColor.black.cgColor]
         view.layer.insertSublayer(layer, at: 0)
     }
@@ -34,7 +36,6 @@ class AuthorisationController: UIViewController {
     }
 
     private func gotoSecondPart() {
-        print("hjkkjkhjgjhgkjkhg")
         performSegue(withIdentifier: "gotoSecondPart", sender: nil)
     }
 

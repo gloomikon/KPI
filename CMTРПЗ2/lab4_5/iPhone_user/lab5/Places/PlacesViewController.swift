@@ -1,11 +1,3 @@
-//
-//  PlacesViewController.swift
-//  lab5
-//
-//  Created by Nikolay Zhurba on 12/3/19.
-//  Copyright © 2019 Nikolay Zhurba. All rights reserved.
-//
-
 struct Place {
     let id: Int
     let name: String
@@ -71,6 +63,7 @@ extension PlacesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlacesCustomCell
+        cell.delegate = self
         cell.name.text = places[indexPath.row].name
         cell.id = places[indexPath.row].id
         if places[indexPath.row].customer_id != nil {
@@ -78,6 +71,7 @@ extension PlacesViewController: UITableViewDataSource, UITableViewDelegate {
             cell.btn.isHidden = true
         } else {
             cell.isFree.text = "Free"
+            cell.btn.isHidden = false
         }
         return cell
     }
