@@ -1,2 +1,5 @@
-com/example/serviceregistrationanddiscoveryclient/ServiceInstanceRestController.class
-com/example/serviceregistrationanddiscoveryclient/ServiceRegistrationAndDiscoveryClientApplication.class
+com/eurekaclient/Customer/CustomerController.class
+com/eurekaclient/EurekaclientApplication.class
+com/eurekaclient/Error/CustomErrorController.class
+com/eurekaclient/Customer/Customer.class
+com/eurekaclient/Customer/CustomerRepository.class

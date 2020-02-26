@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.eurekaclient.EurekaclientApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.375 s - in com.eurekaclient.EurekaclientApplicationTests
