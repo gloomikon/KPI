@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.cloud:spring-cloud-commons:2.2.1.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-commons/2.2.1.RELEASE/6e505636a1e6bad28e553b7ca39661dbf89fa2f0/spring-cloud-commons-2.2.1.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-commons/2.2.1.RELEASE/87421c083ae1c25d9fe8dda722e4c453083a61cd/spring-cloud-commons-2.2.1.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
