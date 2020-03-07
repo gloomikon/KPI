@@ -3,6 +3,7 @@ package com.eurekaclient.Customer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,12 +11,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping
 public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
-    @GetMapping("")
+    @Value("${eureka.instance.instanceId}")
+    private Integer instanceId;
+
+    @GetMapping("/instance")
+    public Integer getInstanceId() {
+        return instanceId;
+    }
+
+    @GetMapping("/customers")
     public String getUserById(@RequestParam(value = "id", required = false) Integer id) {
 
         List<Customer> resultList = new ArrayList<>();
@@ -26,7 +35,7 @@ public class CustomerController {
         else {
             Optional<Customer> customer = customerRepository.findById(id);
             if (customer.isPresent()) {
-                ((ArrayList) resultList).add(customer.get());
+                resultList.add(customer.get());
             }
         }
         Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
@@ -34,7 +43,7 @@ public class CustomerController {
         return prettyJson;
     }
 
-    @PostMapping("")
+    @PostMapping("/customers")
     public Boolean addCustomer(@RequestBody
                                @RequestParam(value = "id", required = true) Integer id,
                                @RequestParam(value = "name", required = true) String name,
@@ -52,7 +61,7 @@ public class CustomerController {
         return true;
     }
 
-    @PutMapping("")
+    @PutMapping("/customers")
     public Boolean updateCustomer(@RequestBody
                                @RequestParam(value = "id", required = true) Integer id,
                                @RequestParam(value = "name", required = true) String name,
@@ -70,7 +79,7 @@ public class CustomerController {
         return true;
     }
 
-    @DeleteMapping("")
+    @DeleteMapping("/customers")
     public Boolean deleteCustomer(@RequestBody
                               @RequestParam(value = "id", required = true) Integer id) {
         Optional<Customer> test = customerRepository.findById(id);
