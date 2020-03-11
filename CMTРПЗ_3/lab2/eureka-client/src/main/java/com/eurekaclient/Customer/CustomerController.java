@@ -33,7 +33,12 @@ public class CustomerController {
 
     @RequestMapping(path="/customers", method = RequestMethod.POST)
     public GetResponse<Boolean> addCustomer(@RequestParam(value = "id", required = true) Integer id,
+                                            @RequestParam(value = "age", required = true) Integer age,
                                             @RequestParam(value = "name", required = true) String name,
+                                            @RequestParam(value = "lastname", required = true) String lastname,
+                                            @RequestParam(value = "address", required = true) String address,
+                                            @RequestParam(value = "phonenumber", required = true) String phonenumber,
+                                            @RequestParam(value = "email", required = true) String email,
                                             @RequestParam(value = "url", required = true) String url) {
         Optional<Customer> test = customerRepository.findById(id);
         if (test.isPresent()) {
@@ -41,7 +46,12 @@ public class CustomerController {
         }
         Customer customer = new Customer();
         customer.setId(id);
+        customer.setAge(age);
         customer.setName(name);
+        customer.setLastname(lastname);
+        customer.setAddress(address);
+        customer.setPhonenumber(phonenumber);
+        customer.setEmail(email);
         customer.setUrl(url);
         customerRepository.save(customer);
 
@@ -50,7 +60,12 @@ public class CustomerController {
 
     @RequestMapping(path="/customers", method = RequestMethod.PUT)
     public GetResponse<Boolean>  updateCustomer(@RequestParam(value = "id", required = true) Integer id,
+                                                @RequestParam(value = "age", required = true) Integer age,
                                                 @RequestParam(value = "name", required = true) String name,
+                                                @RequestParam(value = "lastname", required = true) String lastname,
+                                                @RequestParam(value = "address", required = true) String address,
+                                                @RequestParam(value = "phonenumber", required = true) String phonenumber,
+                                                @RequestParam(value = "email", required = true) String email,
                                                 @RequestParam(value = "url", required = true) String url) {
         Optional<Customer> test = customerRepository.findById(id);
         if (!test.isPresent()) {
@@ -58,7 +73,12 @@ public class CustomerController {
         }
         Customer customer = new Customer();
         customer.setId(id);
+        customer.setAge(age);
         customer.setName(name);
+        customer.setLastname(lastname);
+        customer.setAddress(address);
+        customer.setPhonenumber(phonenumber);
+        customer.setEmail(email);
         customer.setUrl(url);
         customerRepository.save(customer);
 

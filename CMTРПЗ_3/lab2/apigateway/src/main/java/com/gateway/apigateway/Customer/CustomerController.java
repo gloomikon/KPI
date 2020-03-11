@@ -28,17 +28,27 @@ public class CustomerController {
     @RequestMapping(path = "", method = RequestMethod.POST)
     public @ResponseBody
     GetResponse<Boolean> addCustomer(@RequestParam(value = "id", required = true) Integer id,
+                                     @RequestParam(value = "age", required = true) Integer age,
                                      @RequestParam(value = "name", required = true) String name,
+                                     @RequestParam(value = "lastname", required = true) String lastname,
+                                     @RequestParam(value = "address", required = true) String address,
+                                     @RequestParam(value = "phonenumber", required = true) String phonenumber,
+                                     @RequestParam(value = "email", required = true) String email,
                                      @RequestParam(value = "url", required = true) String url) {
-        return customerClient.addCustomer(id, name, url);
+        return customerClient.addCustomer(id, age, name, lastname, address, phonenumber, email, url);
     }
 
     @RequestMapping(path = "", method = RequestMethod.PUT)
     public @ResponseBody
     GetResponse<Boolean> updateCustomer(@RequestParam(value = "id", required = true) Integer id,
+                                        @RequestParam(value = "age", required = true) Integer age,
                                         @RequestParam(value = "name", required = true) String name,
+                                        @RequestParam(value = "lastname", required = true) String lastname,
+                                        @RequestParam(value = "address", required = true) String address,
+                                        @RequestParam(value = "phonenumber", required = true) String phonenumber,
+                                        @RequestParam(value = "email", required = true) String email,
                                         @RequestParam(value = "url", required = true) String url) {
-        return customerClient.updateCustomer(id, name, url);
+        return customerClient.updateCustomer(id, age, name, lastname, address, phonenumber, email, url);
     }
 
     @RequestMapping(path = "", method = RequestMethod.DELETE)
