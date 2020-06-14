@@ -32,25 +32,21 @@
    <li>
     <p><b>GET </b><code> http://localhost:8082/users/{id}</code></p>
     <p>Return user with following id</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.15.33.png" height="300px">
   </li>
   
    <li>
     <p><b>POST </b><code> http://localhost:8082/users/</code></p>
     <p>Create user with required params: id, age, name, surname, email, phonenumber</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.14.26.png" height="300px">
   </li>
   
    <li>
     <p><b>PUT </b><code> http://localhost:8082/users/</code></p>
     <p>Update user with required params: id, age, name, surname, email, phonenumber</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.14.50.png" height="300px">
   </li>
   
    <li>
     <p><b>DELETE </b><code> http://localhost:8082/users/</code></p>
     <p>Delete user with required param: id</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.17.23.png" height="300px">
   </li>
 </ul>
 
@@ -62,31 +58,26 @@
   <li><code>docker exec -it {config-server id} bin/sh</code>//connect to container</li>
   <li><code>cd configdir</code>//here you can update config files</li>
 </ul>
-<img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2020.03.18.png" height="250px">
 
 <ul>
   <li>
     <p><b>GET </b><code>http://localhost:8888/api-gateway/default</code></p>
     <p>Return api-gateway config</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.20.44.png" height="300px">
    </li>
    
    <li>
     <p><b>GET </b><code> http://localhost:8081/config</code></p>
     <p>Return first client config</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.21.09.png" height="300px">
   </li>
   
    <li>
     <p><b>GET </b><code> http://localhost:8082/config/</code></p>
     <p>Return second client config</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.14.26.png" height="300px">
   </li>
 
    <li>
     <p><b>GET </b><code> http://localhost:8080/config</code></p>
     <p>Return all configs</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.21.20.png" height="300px">
   </li>
 
    <li>
