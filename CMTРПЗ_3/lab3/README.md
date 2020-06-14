@@ -26,7 +26,6 @@
   <li>
     <p><b>GET </b><code>http://localhost:8082/users/</code></p>
     <p>Return list of all users</p>
-    <img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-02%20at%2019.15.24.png" height="300px">
    </li>
    
    <li>
