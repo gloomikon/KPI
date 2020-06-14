@@ -56,5 +56,3 @@ To check retry, we can stop DB, make a request and then start DB again.
   <li><code>docker stop <container id></code></li>
   <li><code>docker start <container id></code></li>
 </ul>
-In Grafana we can see analytics graph
-<img src="https://github.com/gloomikon/java/blob/master/.media/Screenshot%202020-05-11%20at%2015.04.01.png" height="300px">
