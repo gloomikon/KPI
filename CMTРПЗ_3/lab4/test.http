@@ -1,0 +1,17 @@
+### Api-gateway config
+GET http://localhost:8888/api-gateway/default
+
+### Service (instance 1) config
+GET http://localhost:8081/config
+
+### Service (instance 2) config
+GET http://localhost:8082/config
+
+### All configs
+GET http://localhost:8080/config
+
+### Config refresh
+POST http://localhost:8081/actuator/refresh
+
+### Bus refresh
+POST http://localhost:8081/actuator/bus-refresh

@@ -1,0 +1,67 @@
+version: '3.4'
+services:
+ config-server:
+   build:
+     context: config-server
+     dockerfile: Dockerfile
+   ports:
+     - '8888:8888'
+
+ rabbit:
+  image: "rabbitmq:3"
+  ports:
+    - "15672:15672"
+    - "5672:5672"
+
+ eureka-service:
+   build:
+     context: eureka-service
+     dockerfile: Dockerfile
+   ports:
+     - '8761:8761'
+   depends_on:
+     - config-server
+
+ eureka-client:
+   build:
+     context: eureka-client
+     dockerfile: Dockerfile
+   ports:
+     - '8081-8082:8081'
+   depends_on:
+     - eureka-service
+     - mysql
+
+ mysql:
+   image: mysql:5.7
+   restart: always
+   environment:
+     MYSQL_DATABASE: 'lab1'
+     MYSQL_USER: 'root'
+     MYSQL_PASSWORD: 'root'
+     MYSQL_ROOT_PASSWORD: 'root'
+   ports:
+     - '3306:3306'
+
+ api-gateway:
+   build:
+     context: api-gateway
+     dockerfile: Dockerfile
+   ports:
+     - '8080:8080'
+   depends_on:
+     - eureka-client
+
+ prometheus:
+   image: prom/prometheus
+   container_name: prometheus
+   volumes:
+     - ./prometheus.yml:/etc/prometheus/prometheus.yml
+   ports:
+   - "9090:9090"
+   - "9080:9080"
+
+ grafana:
+   image: grafana/grafana
+   ports:
+   - "3000:3000"
