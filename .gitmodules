@@ -4,3 +4,6 @@
 [submodule "GDK"]
 	path = GDK
 	url = https://github.com/gloomikon/GDK
+[submodule "ASM"]
+	path = ASM
+	url = https://github.com/gloomikon/ASM.git
