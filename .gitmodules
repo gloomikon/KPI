@@ -19,3 +19,6 @@
 [submodule "OOP"]
 	path = OOP
 	url = https://github.com/gloomikon/OOP
+[submodule "Paradigms"]
+	path = Paradigms
+	url = https://github.com/gloomikon/Paradigms
