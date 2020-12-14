@@ -10,3 +10,6 @@
 [submodule "SMTRPZ_1"]
 	path = SMTRPZ_1
 	url = https://github.com/gloomikon/SMTRPZ_1
+[submodule "SMTRPZ_2"]
+	path = SMTRPZ_2
+	url = https://github.com/gloomikon/SMTRPZ_2
