@@ -1,0 +1,6 @@
+[submodule "AI"]
+	path = AI
+	url = https://github.com/gloomikon/AI
+[submodule "GDK"]
+	path = GDK
+	url = https://github.com/gloomikon/GDK
