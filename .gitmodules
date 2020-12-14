@@ -7,3 +7,6 @@
 [submodule "ASM"]
 	path = ASM
 	url = https://github.com/gloomikon/ASM.git
+[submodule "SMTRPZ_1"]
+	path = SMTRPZ_1
+	url = https://github.com/gloomikon/SMTRPZ_1
