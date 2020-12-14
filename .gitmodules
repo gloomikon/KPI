@@ -16,3 +16,6 @@
 [submodule "SMTRPZ_3"]
 	path = SMTRPZ_3
 	url = https://github.com/gloomikon/SMTRPZ_3
+[submodule "OOP"]
+	path = OOP
+	url = https://github.com/gloomikon/OOP
