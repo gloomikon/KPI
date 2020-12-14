@@ -22,3 +22,6 @@
 [submodule "Paradigms"]
 	path = Paradigms
 	url = https://github.com/gloomikon/Paradigms
+[submodule "WEB"]
+	path = WEB
+	url = https://github.com/gloomikon/WEB
