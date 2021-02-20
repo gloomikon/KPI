@@ -25,3 +25,6 @@
 [submodule "WEB"]
 	path = WEB
 	url = https://github.com/gloomikon/WEB
+[submodule "KPI_Frontend"]
+	path = KPI_Frontend
+	url = https://github.com/gloomikon/KPI_Frontend
