@@ -28,3 +28,6 @@
 [submodule "KPI_Frontend"]
 	path = KPI_Frontend
 	url = https://github.com/gloomikon/KPI_Frontend
+[submodule "ZIKS"]
+	path = ZIKS
+	url = https://github.com/gloomikon/ZIKS
