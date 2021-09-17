@@ -31,3 +31,6 @@
 [submodule "ZIKS"]
 	path = ZIKS
 	url = https://github.com/gloomikon/ZIKS
+[submodule "ml"]
+	path = ml
+	url = https://github.com/gloomikon/ml.git
